@@ -1,5 +1,10 @@
 {
   "builds": [
     { "src": "**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/subsite/(.*)", "dest": "/subsite/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
   ]
 }
