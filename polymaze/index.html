@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>POLYMAZE</title>
+   <script src="./header.js" defer></script>
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+   
+   <script src="./app.js" defer></script>
+   <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+<link rel="stylesheet" href="./headerStyle.css">
+   <style>
+      spline-viewer{
+         height: 90vh;
+      }
+      #container{
+         background: #000;
+      }
+      #logo{
+         display: none !important;
+      }
+      </style>
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js" integrity="sha512-H6aKTjvYAazW0iNuGj1f2dZvSWlt1HGZGEDsXRPETo2IB4H6v36Vl2qiZNlCRxOp0kT7iBf+7USNPavNscZGAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <link rel="stylesheet" href="./style.css">
+
+      <link rel="shortcut icon" href="./assets/logo-vic-small.png" type="image/x-icon">
+   </head>
+
+
+
+<style>
+   
+   
+
+   .swiper {
+     width: 100%;
+     height: 100%;
+   }
+
+   .swiper-slide {
+     /* text-align: center; */
+     /* font-size: 18px; */
+     /* background: #fff; */
+     
+   }
+
+   
+ </style>
+<body>
+
+   <header class="hideOnMobile">
+      <a href="./"><img loading="lazy" src="../assets/logo h-02.png" alt="POLYMAZE" /></a>
+      <nav>
+        <a href="#home" class="navLink home">Home</a>
+        <a href="#polymaze" class="navLink polymaze">POLYMAZE</a>
+        <a href="#register" class="navLink participate">Participate</a>
+        <a href="#faq" class="navLink faq">FAQ</a>
+        <a href="#specifications" class="navLink specifications">Specifications</a>
+        <a href="#testimonies" class="navLink testimonies">Testimonies</a>
+        <a href="#Aboutus" class="navLink abtus">About us</a>
+      </nav>
+    </header>
+
+      <header class="showOnMobile">
+
+      <div class="fixedWrapper">
+        <a href="./"><img loading="lazy" src="../assets/logo h-02.png" alt="POLYMAZE" /></a>
+        <button type="button" class="navToggleWrapper" onclick="navToggle()">
+          
+        </button>
+      </div>
+      <nav>
+         <a href="#home" class="navLink home">Home</a>
+         <a href="#polymaze" class="navLink polymaze">POLYMAZE</a>
+         <a href="#register" class="navLink participate">Participate</a>
+         <a href="#faq" class="navLink faq">FAQ</a>
+         <a href="#specifications" class="navLink specifications">Specifications</a>
+         <a href="#testimonies" class="navLink testimonies">Testimonies</a>
+         <a href="#Aboutus" class="navLink abtus">About us</a>
+      </nav>
+    </header>
+
+   <section id="home" class="hasLights">
+      <div class="left">
+         <h1><span>POLYMAZE</span> is here to throw down the gauntlet for robotics enthusiasts!</h1>
+         <p>Test your skills in <span>mechanics, electronics, robotics and automatics</span> to design and build a robot that can take on a challenging maze completed with intricate pathways and unexpected turns. <span>The Maze is a Beast</span></p>
+        <div class="homeBtns">
+         <a class="button" href="https://youtu.be/U4YS_9TacP0?si=hfJWlylorxDn5twJ">
+            <div class="button-overlay"></div>
+            <span>Watch trailer <div class="ytblogo"></div></span>
+            
+          </a>
+         <a href="#register" class="registerBtn"><span>Register Now!</span><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+      <div class="right">
+         <spline-viewer url="https://prod.spline.design/29-snElDnoywHTbn/scene.splinecode" events-target="global"></spline-viewer>
+
+      </div>
+
+   </section>
+   <section id="countdown" style="display: none;">
+      <div class="overlay"></div>
+      <h2>Time for registrations to close:</h2>
+      <div class="container">
+         <div class="days">
+            <p>10</p>
+         </div>
+         <div class="hours">
+            <p>10</p>
+         </div>
+         <div class="minutes">
+            <p>10</p>
+         </div>
+         <div class="seconds">
+            <p>10</p>
+         </div>
+      </div>
+   </section>
+   
+
+
+   <section id="polymaze" class="">
+      <h2 class="sectionTitle">What is POLYMAZE?</h2>
+
+      <p class="textanim">POLYMAZE is a maze-solving competition hosted by the Vision & Innovation Club. Designed robots rely on their programming and sensors to independently navigate the maze, showcasing impressive robotic abilities.</p>
+
+
+      <div class="slider slider1">
+         <div class="overlay"></div>
+         <div class="container">
+            <img loading="lazy" src="./assets/images/sliders/1.jpg" alt="">
+            <img loading="lazy" src="./assets/images/sliders/2.jpg" alt="">
+            <img loading="lazy" src="./assets/images/sliders/3.jpg" alt="">
+            <!-- <img loading="lazy" src="./assets/images/sliders/4.jpg" alt=""> -->
+            <img loading="lazy" src="./assets/images/sliders/5.jpg" alt="">
+            <img loading="lazy" src="./assets/images/sliders/6.jpg" alt="">
+            <img loading="lazy" src="./assets/images/sliders/7.jpg" alt="">
+            <img loading="lazy" src="./assets/images/sliders/8.jpg" alt="">
+         </div>
+      </div>
+      <div class="slider slider2">
+         <div class="overlay"></div>
+         <div class="container">
+            <!-- <img loading="lazy" src="./assets/images/sliders/9jpg" alt=""> -->
+            <img loading="lazy" src="./assets/images/sliders/10.jpg" alt="">
+            <img loading="lazy" src="./assets/images/sliders/11.jpg" alt="">
+            <!-- <img loading="lazy" src="./assets/images/sliders/4.jpg" alt=""> -->
+            <img loading="lazy" src="./assets/images/sliders/12.jpg" alt="">
+            <img loading="lazy" src="./assets/images/sliders/13.jpg" alt="">
+            <img loading="lazy" src="./assets/images/sliders/14.jpg" alt="">
+            <img loading="lazy" src="./assets/images/sliders/15.jpg" alt="">
+            <img loading="lazy" src="./assets/images/sliders/16.jpg" alt="">
+         </div>
+      </div>
+
+      <h2 class="sectionTitle">What&apos;s new in POLYMAZE 2024 <span>?</h2>
+
+      <p class="textanim">We haven't made a ton of changes to the fundamental structure, the rules, robot specifications, and registration process stay the same. However, here's the exciting part: POLYMAZE will be in two days this year! The first day will consist of the qualification rounds, while the second day will feature the semi finals and the finals.<br>The dates are going to be announced on our site and all over our social media platforms.</p>
+
+
+   </section>
+
+   <section id="register" class="hasLights">
+      <h2 class="sectionTitle">How to participate in POLYMAZE?</h2>
+
+      <div class="container">
+         <h3 data-num="1">Read the specifications document</h3>
+         <p>it will provide you with the competition rules including the restrictions of the robot.
+            You have to respect it otherwise you will be eliminated from POLYMAZE. It also puts on your disposal details about this edition’s theme , the goal of the competition, the minigames and many more. So be sure to go through it carefully!
+            </p>
+            <h3 data-num="2">Filling out the form</h3>
+            <p> To register, fill out the registration form shared in the site to secure your spot.</p>
+            <h3 data-num="3">Prepare your robot and join the POLYMAZE fam</h3>
+            <p>design and build your masterpiece and put it in action.</p>
+
+      </div>
+      <a href="./khlasoregs.html" class="registerBtn"><span>Register Now!</span><i class="fa-solid fa-arrow-right"></i></a>
+
+   </section>
+
+   <section id="faq">
+      <h2 class="sectionTitle">Frequently asked questions</h2>
+
+      <div class="container">
+         
+
+         <div class="el">
+            <div class="plusSign" onclick="showFaq(this.parentElement)"></div>
+            <div class="content">
+               <div class="question" onclick="showFaq(this.parentElement.parentElement)">
+                  Am I allowed to participate alone?
+
+               </div>
+               <div class="answer">
+                  Absolutely, the choice is yours!
+If you want to have a complete freedom in designing and building your robot based on your own vision, POLYMAZE offers participation options for both soloists and teams.
+
+               </div>
+            </div>
+         </div>
+
+         <div class="el">
+            <div class="plusSign" onclick="showFaq(this.parentElement)"></div>
+            <div class="content">
+               <div class="question" onclick="showFaq(this.parentElement.parentElement)">
+                  What is the maximum number of participants allowed in a team?
+               </div>
+               <div class="answer">
+                  A team can have a maximum of 4 people.This size helps the team communicate and collaborate better in order to build and design a proper robot.
+
+               </div>
+            </div>
+         </div>
+
+         <div class="el">
+            <div class="plusSign" onclick="showFaq(this.parentElement)"></div>
+            <div class="content">
+               <div class="question" onclick="showFaq(this.parentElement.parentElement)">
+                  Do all team members need to fill the form?
+
+               </div>
+               <div class="answer">
+                  No, you just need to assign one member of your team to fill it out.
+
+               </div>
+            </div>
+         </div>
+
+
+
+         <div class="el">
+            <div class="plusSign" onclick="showFaq(this.parentElement)"></div>
+            <div class="content">
+               <div class="question" onclick="showFaq(this.parentElement.parentElement)">
+                  How can I find out if I've been accepted to compete in POLYMAZE?
+
+
+               </div>
+               <div class="answer">
+                  All POLYMAZE applicants are going to receive an email about their acceptance status after the registration form closes.
+
+
+               </div>
+            </div>
+         </div>
+
+         
+         <div class="el">
+            <div class="plusSign" onclick="showFaq(this.parentElement)"></div>
+            <div class="content">
+               <div class="question" onclick="showFaq(this.parentElement.parentElement)">
+                  Are there any pre-competition workshops scheduled?
+
+               </div>
+               <div class="answer">
+                  We are pleased to confirm that we offer workshops for POLYMAZE participants, and it is going to be led by skilled trainers.
+
+
+               </div>
+            </div>
+         </div>
+
+
+      </div>
+   </section>
+
+   <section id="specifications" class="hasLights">
+      <h2 class="sectionTitle">Competition Specifications</h2>
+      <p>To know more about <span>POLYMAZE 2024</span> rules and specifications, You can download the following documents: </p>
+      <img src="./assets/specifications.png" loading="lazy" alt="" style="max-width: 70vw;">
+
+      <a class="registerBtn" target="_blank" href="https://drive.google.com/file/d/1_FBBsWVozrdldmpxPELrz5wYs59zGCtq/view"><span>Specifications EN</span><i class="fa-solid fa-download"></i></a>
+      <a class="registerBtn" target="_blank" href="https://drive.google.com/file/d/1tA8501Qm8iioUJyotb9vCfd62M5yRTjp/view"><span>Specifications FR</span><i class="fa-solid fa-download"></i></a>
+   </section>
+
+   <section id="testimonies">
+      <h2 class="sectionTitle">Testimonies</h2>
+
+      <div class="swiper mySwiper">
+         
+         <div class="container swiper-wrapper">
+            <div class="card swiper-slide">
+               <div class="author">
+                  <div class="img"><img loading="lazy" src="./assets/Testimonials/Amine.jpg" alt="Amin"></div>
+                  <div class="info">
+                     <p class="name">BENNACER Amine Rami</p>
+                     <p class="club">Hermes</p>
+                  </div>
+               </div>
+               <div class="core">
+                  <p>“As students, we always seek the best opportunities, and Polymaze was the opportunity of the year not to be missed. I learned how to work in a team, how to solve engineering problems, and above all, patience. Don't be afraid because at the beginning, we all start from the same level. Through Polymaze, you can reach the level you aim for, so never give up.”</p>
+               </div>
+            </div>
+
+            <div class="card swiper-slide">
+               <div class="author">
+                  <div class="img"><img loading="lazy" src="./assets/Testimonials/Farid.jpg" alt="Farid"></div>
+                  <div class="info">
+                     <p class="name">LAOUDI Farid</p>
+                     <p class="club">Unimate 2.0</p>
+                  </div>
+               </div>
+               <div class="core">
+                  <p>“It was my first robotic competition , I gained a lot of friends with the same interest , I started a lot of projects after Polymaze so I can say I unlocked a new Hobby. The organizers were joyful challenges , and the D-day was well organized  “
+                  </p>
+               </div>
+            </div>
+
+            <div class="card swiper-slide">
+               <div class="author">
+                  <div class="img"><img loading="lazy" src="./assets/Testimonials/Chichi.jpg" alt="Chichi"></div>
+                  <div class="info">
+                     <p class="name">KOUIDER CHICHI Ahmed</p>
+                     <p class="club">The noobs</p>
+                  </div>
+               </div>
+               <div class="core">
+                  <p>“I was in the midst of exams preparation and wanted to break away from the study atmosphere, so I participated in Polymaze 2022. I made it to the semi-finals, showcasing an example of a prepa student who has any prior knowledge about robotics.”</p>
+               </div>
+            </div>
+
+            <div class="card swiper-slide">
+               <div class="author">
+                  <div class="img"><img loading="lazy" src="./assets/Testimonials/Hussein.jpg" alt="Hussein"></div>
+                  <div class="info">
+                     <p class="name">DERICHE Hussein</p>
+                     <p class="club">Vegapunk </p>
+                  </div>
+               </div>
+               <div class="core">
+                  <p>“I want to express my gratitude once again to the club for the incredible experience they provided me with. I learned valuable skills in working with new components and managing my time, specifically because it was during the exam season.”</p>
+               </div>
+            </div>
+
+            <div class="card swiper-slide">
+               <div class="author">
+                  <div class="img"><img loading="lazy" src="./assets/Testimonials/Naila.jpg" alt="Naïla"></div>
+                  <div class="info">
+                     <p class="name">SADAOUI Naïla</p>
+                     <p class="club">Vegapunk</p>
+                  </div>
+               </div>
+               <div class="core">
+                  <p>“My experience with polymaze is unique and unforgettable. "Vegapunk" was the name of my team. We decided to do our best and win since the day we applied. Technically speaking, learning by doing and enjoying the journey. Thank you Polymaze!.”</p>
+               </div>
+            </div>
+
+         </div>
+         <div class="navigations">
+            <div class="swiper-button-prev"><i class="fa-solid fa-circle-chevron-left"></i></div>
+            <div class="swiper-button-next"><i class="fa-solid fa-circle-chevron-right"></i></div>
+         </div>
+         <div class="swiper-pagination"></div>
+      </div>
+   </section>
+
+   <section id="Aboutus" >
+      <h2 class="sectionTitle">About us</h2>
+      <p>
+         The <span>Vision & Innovation Club</span> is a scientific club supervised by the scientific association <span>EL MAARIFA</span>, which fosters an environment of future engineers within their esteemed school <span>ECOLE NATIONALE POLYTECHNIQUE D'ALGER</span>.
+         <br>
+            Our club aims to elevate students' university experience through the exchange of various perspectives where everyone ignites his own idea.
+            This assembly of ideas and efforts allow us to organize plenty of events which vary between enthusiastic competitions and charitable activities, such as : Polymaze, Ignite, Engineer's Gala, Charity, and so on.
+            
+      </p>
+   </section>
+
+   <section id="specialThanks">
+      <h2 class="sectionTitle">Special Thanks</h2>
+      <p>Special thanks to <a href="https://www.dzhoster.com/">DZHOSTER</a> For their support.</p>
+      <a href="https://www.dzhoster.com/"><img src="./assets/dzhoster.png" loading="lazy" alt="dzhoster"></a>
+   </section>
+
+   <footer class="glass">
+      <a href="#"><img src="./assets/vic_logo.png" alt=""></a>
+      <div class="socials">
+         <a href="https://www.facebook.com/vic.enpa"><i class="fa-brands fa-facebook"></i></a>
+         <a href="https://www.instagram.com/vic.enp/"><i class="fa-brands fa-instagram"></i></a>
+         <a href="https://www.linkedin.com/company/vicenp/"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+   </footer>
+
+
+
+
+   <div class="loader">
+      <video src="./assets/loader/logo fill.mp4" autoplay muted type="video" loading="eager">
+         <source src="./assets/loader/logo fill.mp4" autoplay muted type="video" loading="eager">
+      </video>
+   </div>
+  
+</body>
+</html>

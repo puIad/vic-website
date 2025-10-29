@@ -1,0 +1,111 @@
+
+header{
+   width: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background: #12143245;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(6.9px);
+   -webkit-backdrop-filter: blur(6.9px);
+   border-bottom: 1px solid rgba(222, 234, 178, 0.4);
+   border-radius:  0  0 1em 1em;
+   padding: 1em clamp(2em, 10vw, 15em);
+   height: 10vh;
+   z-index: 999;
+   /* display: none; */
+}
+header a{
+   all: unset;
+   cursor: pointer;
+   height: 100%;
+}
+header a img{
+   margin-top: 5px;
+   max-height: 100%;
+}
+
+header nav{
+   display: flex;
+   gap: 1em;
+}
+
+header nav a {
+   padding: 1em 0.5em;
+   position: relative;
+   font-size: 1.3em;
+   color: white;
+}
+
+header nav a:after{
+   content:'';
+   position: absolute;
+   width: 0;
+   height: 5px;
+   border-radius: 100vmax;
+   transform: translateX(-50%);
+   transition: 0.4s ease;
+   background: var(--accent-color);
+   bottom: 0.5em;
+   left: 50%;
+}
+
+
+
+header nav a:hover::after, header nav a.active::after{
+   width: 100%;
+}
+
+header.showOnMobile{
+   display: none;
+}
+header.hideOnMobile{
+      display: flex;
+}
+
+header button{
+   all: unset;
+   cursor: pointer;
+   color: white;
+}
+header button *{
+   color: white;
+   stroke: white !important;
+}
+.fixedWrapper{
+   height: 10vh;
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   padding: 1em clamp(2em, 10vw, 15em);
+}
+@media screen and (max-width:768px) {
+   header.showOnMobile {
+
+      display: flex;
+      height: 10vh;
+      flex-direction: column;
+      transition: 0.5s ease-in-out;
+      padding: none;
+      /* position: ; */
+      overflow: hidden;
+      padding: 0;
+   }
+   header.showOnMobile.active{
+      height: 100vh;
+
+   }
+   header.hideOnMobile {
+      display: none;
+   }
+   .showOnMobile nav{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 20vh;
+   }
+}

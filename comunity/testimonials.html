@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Vision & Innovation Club</title>
+
+   <link rel="stylesheet" href="../style.css">
+   <link rel="stylesheet" href="../style.css">
+   <!-- <script src="../script.js" defer></script> -->
+   <script src="../script.js" defer></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js" integrity="sha512-H6aKTjvYAazW0iNuGj1f2dZvSWlt1HGZGEDsXRPETo2IB4H6v36Vl2qiZNlCRxOp0kT7iBf+7USNPavNscZGAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+   <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
+   <link rel="shortcut icon" href="../public/header-logo.svg" type="image/x-icon">
+
+
+</head>
+
+<body>
+
+
+
+<section id="hero">
+      <a href="../index.html" class="backBtn"><i class="fa-solid fa-arrow-left"></i></a>
+      <div class="text">
+         <h1 class="blueishText">
+            Page to be discovered
+         </h1>
+      </div>
+   </section>
+
+ 
+
+
+<footer>
+      <div class="top">
+         <div class="left">
+            <img src="../public/footer-logo.svg" alt="">
+            <div class="social">
+               <a href="https://www.instagram.com/vic.enp/"><i class="fa-brands fa-instagram"></i></a>
+               <a href="https://www.facebook.com/vic.enpa"><i class="fa-brands fa-facebook-f"></i></a>
+               <a href="https://www.linkedin.com/in/vic-enp/"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+         </div>
+         <div class="right">
+            <a href="../about.html">About us</a>
+            <div>
+               <a href="../comunity.html">Community</a>
+               <a href="members.html">members</a>
+               <a href="testimonials.html">Testimonials</a>
+            </div>
+            <a href="../events.html">Events</a>
+            <a href="../contact.html">Contact Us</a>
+         </div>
+
+      </div>
+      <div class="bottom">
+         <p>&#169; VIC ENP. All rights reserved</p>
+         <div style="display:flex; gap:3em;">
+            <a href="../policy.html">Privacy & Policy</a>
+            <a href="../conditions.html">Terms & Conditions</a>
+         </div>
+      </div>
+   </footer>
+ <script>
+   
+let animation = lottie.loadAnimation({
+   container: document.querySelector('.animation'),
+   renderer: 'svg',
+   loop: true,
+   autoplay: true,
+   path: '../public/404/animation.json' // the path to the animation json
+});
+ </script>
+
+ 
+<style>
+      .loaderWrapper {
+         width: 100vw;
+         height: 100lvh;
+         display: grid;
+         place-items: center;
+         position: fixed;
+         left: 0;
+         top: 0;
+         background: var(--bg);
+         z-index: 10000;
+      }
+
+      .loader {
+         width: 60px;
+         aspect-ratio: 1;
+         --g: conic-gradient(from -90deg at 10px 10px, #fff 90deg, #0000 0);
+         background:
+            var(--g),
+            var(--g) 10px 10px,
+            var(--g) 20px 20px;
+         background-size: 50% 50%;
+         animation: l15 1s infinite;
+      }
+
+      @keyframes l15 {
+
+         90%,
+         100% {
+            background-position: -30px 30px, -20px 40px, -10px 50px
+         }
+      }
+   </style>
+
+   <div class="loaderWrapper">
+      <div class="loader"></div>
+   </div>
+   <script>
+      setTimeout(() => {
+         document.querySelector('.loaderWrapper').style.display = 'none'
+
+      }, 3000);
+   </script></body>
+
+</html>

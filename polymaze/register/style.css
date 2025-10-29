@@ -1,0 +1,571 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+:root{
+   --gradient: linear-gradient(144deg,#af40ff,#5b42f3 50%,#00ddeb);
+
+   --bg: #2D3250;
+   --bg-l: #424769;
+   --orange: #F6B17A;
+   /* --light1: #7077A1; */
+
+   --blue: #3652AD;
+}
+*{
+   font-family: 'Poppins', sans-serif;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   accent-color: var(--accent-color);
+}
+h1,h2,a,p,label{
+   color: white;
+}
+body{
+   background: var(--bg);
+}
+
+section{
+   padding: 10vh clamp(2em, 10vw, 15em);
+   margin: 0;
+   margin-top: 10vh;
+
+}
+
+section#reg{
+   min-height: 100vh;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   flex-grow: 1;
+   flex-shrink: 0;
+   margin-top: 10vh;
+}
+
+form{
+   flex-grow: 1;
+   flex-shrink: 0;
+}
+h1.sectionTitle{
+   font-size: 3em;
+   font-weight: 600;
+   position: relative;
+   display: inline-block;
+   margin-top: 3em;
+}
+
+h1.sectionTitle::before{
+   z-index: -1;
+   content: '';
+   width: 70%;
+   background-color: var(--accent-color);
+   height: 5px;
+   border-radius: 100vmax;
+   position: absolute;
+   left: 0;
+   bottom: 10px;
+}
+button{
+   cursor: pointer;
+}
+
+form{
+   /* padding: clamp(1em ,5vw ,5em) ; */
+   border-radius: 2em;
+   display: flex;
+   flex-direction: column;
+   margin: 4vh 0 10vh;
+}
+
+.member , .experiences{
+   padding: clamp(1em ,5vw ,5em) ;
+   border: 1px solid var(--light1);
+   border-radius: 1em;
+   margin: 3em 0;
+   
+}
+ .chunk{
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: clamp(1em ,3vw ,5em);
+}
+ .chunk.sndchunk{
+   grid-template-columns: 3fr 1fr;
+
+}
+.formalTraining{
+   display: flex;
+   /* justify-content: space-between; */
+   flex-direction: column;
+}
+.smallInps{
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 1em;
+}
+input{
+   background: var(--dark1);
+   outline: none;
+   border: var(--light1) 1px solid ;
+   border-radius: 0.5em;
+   padding: 0.8em 3em 0.8em 2em;
+   width: 100%;
+   display: block;
+   font-size: 1.25em;
+   margin-bottom: 2em;
+   color: white;
+   transition: 0.2s;
+   letter-spacing: 1px;
+}
+input::placeholder{
+   color: rgb(215, 215, 215);
+
+}
+input:focus{
+   border-color: var(--accent-color);
+}
+input[type="radio"]{
+   width: unset;
+   display: inline;
+   display: none;
+}
+.radioContainer ~ label:not(.radioContainer){
+   margin-right: 1em;
+   font-size: 1.3em;
+}
+
+/* input[type="radio"] ~ label.test{
+    width: 50px;
+    height: 50px;
+    background: red;
+} */
+
+
+.flex{
+   display: flex;
+   align-items: center;
+   gap: 0.5em;
+   overflow-x: scroll;
+   margin-top: 0.5em;
+   padding-left: 0.5rem;
+}
+
+.flex::-webkit-scrollbar{
+   
+   height: 2px;
+}
+.flex::-webkit-scrollbar-thumb{
+   background-color: var(--dark1);
+   border-radius: 100vmax;
+}
+/*  */
+
+
+.radioInpContainer{
+   display: flex;
+   align-items: center;
+   gap: 0.5em;
+   margin-top: 0.5em;
+}
+
+.radioContainer input {
+   position: absolute;
+   opacity: 0;
+   cursor: pointer;
+   height: 0;
+   width: 0;
+ }
+ 
+ .radioContainer {
+   /* display: block; */
+   position: relative;
+   cursor: pointer;
+   font-size: 1em;
+   user-select: none;
+ }
+ 
+ .checkmark {
+   position: relative;
+   top: 0;
+   left: 0;
+   height: 1.6em;
+   width: 1.6em;
+   border-radius: 50%;
+   background: var(--bg);
+   transition: all 0.2s ease;
+   outline: 1px solid var(--light1);
+   outline-offset: 2px;
+ }
+ 
+ .checkmark {
+   opacity: 0.4;
+ }
+ 
+ .radioContainer input:checked ~ .checkmark {
+   background: var(--accent-color);
+   opacity: 0.9;
+   transition: all 0.2s ease;
+ }
+ 
+ .checkmark:after {
+   content: "";
+   position: absolute;
+   display: none;
+ }
+ 
+ .radioContainer input:checked ~ .checkmark:after {
+   display: block;
+ }
+ 
+ .radioContainer .checkmark:after {
+   left: 0.61em;
+   top: 0.4em;
+   width: 0.25em;
+   height: 0.5em;
+   border: solid var(--dark1);
+   border-width: 0 0.15em 0.15em 0;
+   transform: rotate(45deg);
+ }
+/*  */
+/* input[type="radio"]:checked ~ label.test{
+   background: blue;
+} */
+
+label {
+   /* margin-top: 2em; */
+   display:inline-block;
+   font-weight: 500;
+   font-size: 1.2em;
+   margin-bottom: 0.5em;
+   color: #dddfef;
+}
+label.imp::after{
+   content: '*';
+   color: red;
+}
+p{
+   margin-top: 2em;
+   font-weight: 500;
+   font-size: 1.2em;
+
+}
+h2{
+   /* margin-top: 3em; */
+   margin-top: 2em;
+   font-weight: 500;
+}
+
+.memberHeader h2{
+   font-weight: 700;
+}
+form button[type="submit"]{
+   position: relative;
+}
+
+form button[type="submit"] .loading{
+   display: none;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   left: 0;
+   top: 0;
+   padding: 0;
+}
+
+
+
+form button[type="submit"].clicked .loading{
+   display: grid;
+   place-items: center;
+}
+
+
+form button[type="submit"].clicked .loading .el{
+   border-bottom: 3px solid white;
+   animation:  1s ease infinite spin;
+   width: 2em;
+   height: 2em;
+   border-radius: 100vmax;
+}
+
+@keyframes spin {
+   0%{transform: rotate(0);}
+   100%{transform:rotate(360deg);}
+}
+
+
+
+
+/* form button[type="submit"]{
+   background: var(--accent-color);
+   padding: 1em 2em;
+   color: white;
+   border: 2px solid var(--accent-color);
+   border-radius: 10px;
+   transition: 0.3s;
+   margin-top: 3em;
+   width: 100%;
+} */
+
+.teamchose{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.teamMembers{
+   margin-bottom: 3em;
+}
+
+.teamMembersHeader{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.teamMembersHeader h2{
+   margin-top: 0;
+}
+
+
+.teamMembersHeader  button{
+   background: var(--blue);
+   border: none;
+   color: white;
+   border-radius: 10px;
+   padding: 1em 1.8em;
+
+}
+
+.prevParticipation > div:not(.moreInfo) , .formalTraining > div:not(.moreInfo){
+   display: flex;
+   align-items: center;
+   gap: 0.5em;
+   margin-bottom: 1em;
+}
+
+
+.prevParticipation > p , .formalTraining > p{
+   margin-bottom: 1em;
+}
+
+.moreInfo{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   flex-grow: 1;
+}
+
+.anythingToAddInp{
+   margin-top: 3em;
+}
+
+.submitBtn{
+   font-size: 1.2em;
+}
+.memberHeader{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.memberHeader h2{
+   margin-top: 0;
+   margin-bottom: 1em;
+}
+
+.member > h2{
+   margin-bottom: 0.5em;
+
+}
+
+
+
+.memberHeader button{
+   width: 3.5em;
+   height: 3.5em;
+   display: grid;
+   place-content: center;
+   border-radius: 100vmax;
+   outline: none;
+   border: none;
+   font-size: 1em;
+   color: var(--);
+}
+
+
+@media screen and (max-width: 1440px) {
+   body{
+      font-size: 15px;
+   }
+}
+
+@media screen and (max-width: 1024px) {
+   body{
+      font-size: 13px;
+   }
+   h1.sectionTitle{
+      margin-top: 2em;
+   }
+}
+
+@media screen and (max-width: 768px) {
+   .chunk{
+      grid-template-columns: repeat(1,1fr);
+   }
+   .chunk.sndchunk{
+      grid-template-columns: 2fr 1fr;
+   }
+}
+
+
+@media screen and (max-width: 500px) {
+   body{
+      font-size: 12px;
+   }
+   .teamMembersHeader  button{
+      padding: 1em;
+      width: 3em;
+      height: 3em;
+
+   }
+   .teamMembersHeader  button span{
+      display: none;
+   }
+   h1.sectionTitle{
+      margin-top: 1.5em;
+   }
+}
+
+@media screen and (max-width: 400px) {
+   body{
+      font-size: 11px;
+   }
+}
+
+
+
+
+
+.navButtons{
+   display: flex;
+   gap: 1.5em;
+   justify-content: end;
+   margin-top: 2em;
+}
+.step{
+   display: none;
+   height: 100%;
+   /* flex-grow: 1; */
+   justify-content: space-between;
+}
+
+.step0{
+   display: flex;
+   flex-direction: column;
+}
+
+.step0 .sectionTitle{
+   margin-bottom: 0;
+}
+
+.step0 p{
+   font-size: 2em;
+}
+
+
+.teamMembers .container{
+   display: flex;
+   gap: 0.5em;
+   margin-top: 0.5em;
+}
+
+.teamMembers .container input{
+   width: unset;
+   margin-bottom: 0;
+}
+
+.teamMembers .container button{
+   padding: 0.8em ;
+   display: grid;place-items: center;
+   aspect-ratio: 1/1;
+   background: var(--accent-color);
+   color: var(--light1);
+   width: 2em;
+   font-size: 1em;
+   border-radius: 0.5em;
+}
+
+.progress {
+   width: 80%;
+   box-sizing: border-box;
+   padding: 2em 0;
+   /* background: ; */
+   position: relative;
+   margin: 0 auto;
+}
+
+.progress .container{
+   width: 100%;
+   height: 20px;
+   border-radius: 100vmax;
+   background: var(--light1);
+   padding: 0.3rem;
+}
+
+.progress .container .fill{
+   border-radius: 100vmax;
+   background: var(--accent-color);
+   height: 100%;
+   width: 25%;
+   transition: 0.3s;
+}
+
+.progress .circles{
+   position: absolute;
+   width: 100%;
+   left: 0;
+   top: 50%;
+   transform: translateY(-50%);
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.progress .circles .circle{
+   width: 3em;
+   height: 3em;
+   border-radius: 100vmax;
+   transition: 0.3s;
+   display: grid;
+   place-items: center;
+   color: var(--accent-color);
+   background: var(--light1);
+   border: 4px solid var(--accent-color);
+
+}
+
+
+.progress .circles .circle.active{
+   color: white;
+   background: var(--accent-color);
+}
+
+.progress .fill[data-progress="0"]{
+   width: 4%;
+}
+
+.progress .fill[data-progress="1"]{
+   width: 25%;
+}
+
+.progress .fill[data-progress="2"]{
+   width: 50%;
+}
+
+.progress .fill[data-progress="3"]{
+   width: 75%;
+}
+
+
+input.red{
+   border-color: red;
+}

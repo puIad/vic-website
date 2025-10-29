@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+body{
+    margin: auto;
+}
+.container{
+    max-width: 500px;
+    margin: auto;
+    position: relative;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+    .container {
+        /* height: 100vh; */
+        background: linear-gradient(to bottom, black, rgb(37, 43, 5));
+        font-family: 'Roboto Condensed', sans-serif;
+        overflow-y: scroll;
+    }
+    
+    header {
+        width: 100%;
+        background-color: black;
+        color: white;
+        margin: 0;
+        
+        
+        z-index: 1;
+    }
+    header .club img{
+        margin: 10px;
+        height: 3rem;
+        object-fit: contain;
+    }
+    header .club .maze {
+        width: 170px;
+        border: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    header .club .vic {
+        width: 170px;
+        border: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .social img {
+        width: 60px;
+    }
+    
+    .social {
+        display: flex;
+        justify-content: center; /* Centre les icônes horizontalement */
+        gap: 10px; /* Espace entre les icônes */
+        margin-bottom: 10px;
+    }
+
+    .social a{
+        color: aliceblue;
+        font-size: 2rem;
+    }
+    
+    footer .social {
+        margin-top: 3rem;
+        width: 100%; /* Assure que le conteneur des icônes prend toute la largeur */
+    }
+    
+    .text {
+        margin: 20px;
+        padding: 120px 0;
+    }
+    
+    span {
+        color: rgb(191, 224, 8);
+        font-weight: bold;
+    }
+    
+    p {
+        font-size: 1.2em;
+        color: aliceblue;
+    }
+    
+    

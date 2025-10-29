@@ -61,7 +61,7 @@ ul li::marker {
 
 
 body {
-   background: url(./public/back.svg);
+   background: url(public/back.svg);
    background-repeat: repeat-y;
    background-size: 100%;
    /* min-width: 100vw; */

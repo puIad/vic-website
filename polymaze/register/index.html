@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polymaze - Registration</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./app.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../headerStyle.css">
+
+    <link rel="stylesheet" href="../style.css">
+    <script src="../smtp.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js" integrity="sha512-H6aKTjvYAazW0iNuGj1f2dZvSWlt1HGZGEDsXRPETo2IB4H6v36Vl2qiZNlCRxOp0kT7iBf+7USNPavNscZGAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../header.js" defer></script>
+
+    <link rel="shortcut icon" href="../assets/logo-vic-small.png" type="image/x-icon">
+
+
+    <script src="
+https://cdn.jsdelivr.net/npm/postmark@4.0.2/dist/index.min.js
+"></script>
+  </head>
+
+  <body>
+    <header class="hideOnMobile">
+      <a href="./"><img src="../assets/logo h-02.png" alt="POLYMAZE" /></a>
+      <nav>
+        <a href="../#home" class="navLink">Home</a>
+        <a href="../#polymaze" class="navLink">Polymaze</a>
+        <a href="../#testimonials" class="navLink">Testimonials</a>
+        <a href="../#register" class="navLink active">Registration</a>
+        <a href="../#contact" class="navLink">Contact</a>
+      </nav>
+    </header>
+
+      <header class="showOnMobile">
+
+      <div class="fixedWrapper">
+        <a href="./"><img src="../assets/logo h-02.png" alt="POLYMAZE" /></a>
+        <button type="button" class="navToggleWrapper" onclick="navToggle()">
+          
+        </button>
+      </div>
+      <nav>
+        <a href="../#home" class="navLink">Home</a>
+        <a href="../#polymaze" class="navLink">Polymaze</a>
+        <a href="../#testimonials" class="navLink">Testimonials</a>
+        <a href="../#register" class="navLink active">Registration</a>
+        <a href="../#contact" class="navLink">Contact</a>
+      </nav>
+    </header>
+
+    
+
+    <section id="reg">
+
+      <h2 class="sectionTitle">POLYMAZE Registraion</h2>
+
+      <div class="progress">
+        <div class="container">
+          <div class="fill" data-progress="0"></div>
+          <div class="circles">
+            <div class="info circle "><i class="fa-solid fa-info"></i></div>
+            <div class="users circle"><i class="fa-solid fa-users"></i></div>
+            <div class="book circle"><i class="fa-solid fa-book"></i></div>
+          </div>
+        </div>
+      </div>
+       
+      <form
+        action="https://script.google.com/macros/s/AKfycbxOne5Tn62ZxguRktHxz7q-YrgMA3G_4HiGtZnksIBaQHOw62d1mfpfK3fmU84frCziYA/exec"
+        method="POST"
+      >
+
+
+      <div class="step step0 glass" data-step="0">
+        <p><span>Welcome to POLYMAZE,</span> an exhilarating robotic competition where innovation meets adventure! This is your chance to showcase your skills in programming, electronics, and mechanical design while competing against the brightest minds in robotics. Join us for an unforgettable experience filled with creativity and cutting-edge technology. Are you ready to take on the Polymaze challenge and prove your prowess? <br>Sign up now and let your robotic journey begin!</p>
+
+        <div class="navButtons">
+          <!-- <button type="submit" disabled class="nextStep registerBtn" onclick="nextSlide(this.parentElement.parentElement)"><div class="loading glass"><div class="el"></div></div><span>Submit</span> <i class="fa-solid fa-arrow-right"></i></button> -->
+          <button type="button"  class="nextStep registerBtn" onclick="nextSlide(this.parentElement.parentElement)"><span>Next step</span> <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="step step1 glass" data-step="1">
+        <div class="memberHeader">
+          <h2>About The Team</h2>
+        </div>
+        <label for="teamName" class="imp">Team Name</label>
+              <input
+                type="text"
+                name="team name"
+                id="teamName"
+                placeholder="Team Name"
+                required
+              />
+
+              <div class="teamchose">
+                <div>
+                  <p>Will you participate solo or in a team?</p>
+                  <div class="radioInpContainer">
+                    <label class="radioContainer">
+                      <input
+                        type="radio"
+                        name="team members"
+                        id="tsolo"
+                        value="solo"
+                        checked
+                      />
+                      <div class="checkmark"></div>
+                    </label>
+                    <label for="tsolo">Solo</label>
+    
+                    <label class="radioContainer">
+                      <input
+                        type="radio"
+                        name="team members"
+                        id="tteam"
+                        value="in team"
+                      />
+                      <div class="checkmark"></div>
+                    </label>
+                    <label for="tteam">In a team</label>
+                  </div>
+                </div>
+              </div>
+              <div class="teamMembers">
+                <p>If in a team, how many members?</p>
+                <div class="container">
+                  <button type="button" onclick="redMember()"><i class="fa-solid fa-minus"></i></button>
+                  <input type="number" name="members count" id="mcount" min="1" max="4" value="1">
+                  <button type="button" onclick="addMember()"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+        <div class="navButtons">
+          <button type="button" class="prevStep " onclick="prevSlide(this.parentElement.parentElement)"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+          <button type="button" class="nextStep registerBtn" onclick="nextSlide(this.parentElement.parentElement)"><span>Next step</span> <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="step step2 glass" data-step="2">
+        <div class="memberHeader">
+          <h2>About Members</h2>
+        </div>
+        <div class="container"></div>
+
+
+        
+        <div class="navButtons">
+          <button type="button" class="prevStep " onclick="prevSlide(this.parentElement.parentElement)"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+          <button type="button" class="nextStep registerBtn" onclick="nextSlide(this.parentElement.parentElement)"><span>Next step</span> <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+
+      <div class="step step3 glass" data-step="3">
+        <!-- <h2 class="sectionTitle">POLYMAZE Registraion</h2> -->
+        <div class="memberHeader">
+          <h2>Members experiences</h2>
+        </div>
+        <h2>Robotics Experience</h2>
+        <div class="chunk">
+          <div class="prevParticipation">
+            <p>Have you participated in any robotics competitions before?</p>
+            <div>
+              <label class="radioContainer">
+                <input
+                  type="radio"
+                  name="participated before"
+                  id="pyes"
+                  value="yes"
+                  checked
+                />
+                <div class="checkmark"></div>
+              </label>
+              <label for="pyes">Yes</label>
+              <label class="radioContainer">
+                <input
+                  type="radio"
+                  name="participated before"
+                  id="pno"
+                  value="no"
+                  
+                />
+                <div class="checkmark"></div>
+              </label>
+              <label for="pno">No</label>
+            </div>
+
+            <div class="moreInfo">
+              <label for="prevDetails" class="imp">If yes, please provide some details </label
+              >
+              <input
+                type="text"
+                name="details abt previous participation"
+                id="prevDetails"
+                placeholder="competition name, year, achievements, etc."
+                required=""
+              />
+            </div>
+          </div>
+
+          <div class="formalTraining">
+            <p>Do you have any formal training or education in robotics?</p>
+            <div>
+              <label class="radioContainer">
+                <input
+                  type="radio"
+                  name="had formal training"
+                  id="fyes"
+                  value="yes"
+                  checked
+                />
+                <div class="checkmark"></div>
+              </label>
+              <label for="fyes">Yes</label>
+              <label class="radioContainer">
+                <input
+                  type="radio"
+                  name="had formal training"
+                  id="fno"
+                  value="no"
+                  
+                />
+                <div class="checkmark"></div>
+              </label>
+              <label for="fno">No</label>
+            </div>
+            <div class="moreInfo">
+              <label for="formaltrainingDetails" class="imp"
+              >If yes, please specify the type of training or education.
+            </label>
+            <input
+              type="text"
+              name="details abt formal training"
+              id="formaltrainingDetails"
+              placeholder="the type of training or education."
+              required
+            />
+            </div>
+          </div>
+        </div>
+
+        <h2>Skills and Expertise</h2>
+
+        <p>Rate your proficiency in programming</p>
+        <div class="flex">
+          <label class="radioContainer">
+            <input
+              type="radio"
+              checked
+              name="programming proficiency"
+              id="pBeginner"
+              value="Beginner"
+            />
+            <div class="checkmark"></div>
+          </label>
+          <label for="pBeginner">Beginner</label>
+
+          <label class="radioContainer">
+            <input
+              type="radio"
+              name="programming proficiency"
+              id="pIntermediate"
+              value="Intermediate"
+            />
+            <div class="checkmark"></div>
+          </label>
+          <label for="pIntermediate">Intermediate</label>
+
+          <label class="radioContainer">
+            <input
+              type="radio"
+              name="programming proficiency"
+              id="pAdvanced"
+              value="Advanced"
+            />
+            <div class="checkmark"></div>
+          </label>
+          <label for="pAdvanced">Advanced</label>
+        </div>
+
+        <p>Rate your proficiency in electronics</p>
+        <div class="flex">
+          <label class="radioContainer">
+            <input
+              type="radio"
+              checked
+              name="electronics proficiency"
+              id="eBeginner"
+              value="Beginner"
+            />
+            <div class="checkmark"></div>
+          </label>
+          <label for="eBeginner">Beginner</label>
+
+          <label class="radioContainer">
+            <input
+              type="radio"
+              name="electronics proficiency"
+              id="eIntermediate"
+              value="Intermediate"
+            />
+            <div class="checkmark"></div>
+          </label>
+          <label for="eIntermediate">Intermediate</label>
+
+          <label class="radioContainer">
+            <input
+              type="radio"
+              name="electronics proficiency"
+              id="eAdvanced"
+              value="Advanced"
+            />
+            <div class="checkmark"></div>
+          </label>
+          <label for="eAdvanced">Advanced</label>
+        </div>
+
+        <p>Rate your proficiency in mechanical design</p>
+        <div class="flex">
+          <label class="radioContainer">
+            <input
+              type="radio"
+              checked
+              name="mechanical design proficiency"
+              id="mBeginner"
+              value="Beginner"
+            />
+            <div class="checkmark"></div>
+          </label>
+          <label for="mBeginner">Beginner</label>
+
+          <label class="radioContainer">
+            <input
+              type="radio"
+              name="mechanical design proficiency"
+              id="mIntermediate"
+              value="Intermediate"
+            />
+            <div class="checkmark"></div>
+          </label>
+          <label for="mIntermediate">Intermediate</label>
+
+          <label class="radioContainer">
+            <input
+              type="radio"
+              name="mechanical design proficiency"
+              id="mAdvanced"
+              value="Advanced"
+            />
+            <div class="checkmark"></div>
+          </label>
+          <label for="mAdvanced">Advanced</label>
+        </div>
+
+        <div class="workshops">
+          <p>Do want to attend the workshops? (Where we will provide the basics of creating robots)</p>
+            <div>
+              <label class="radioContainer">
+                <input
+                  type="radio"
+                  name="attend workshops"
+                  id="wyes"
+                  value="yes"
+                  checked
+                />
+                <div class="checkmark"></div>
+              </label>
+              <label for="wyes">Yes</label>
+              <label class="radioContainer">
+                <input
+                  type="radio"
+                  name="attend workshops"
+                  id="wno"
+                  value="no"
+                  
+                />
+                <div class="checkmark"></div>
+              </label>
+              <label for="wno">No</label>
+            </div>
+
+        </div>
+
+        <label for="inspired" class="inspiredInp"
+          >What inspired you to participate in Polymaze? </label
+        >
+        <input
+          type="text"
+          name="inspiration"
+          id="inspired"
+          placeholder="What inspired you to participate"
+        />  
+
+        <label for="anythingToAdd" class="anythingToAddInp"
+          >Is there anything else you would like to share or ask about the
+          competition?</label
+        >
+        <input
+          type="text"
+          name="addition"
+          id="anythingToAdd"
+          placeholder=""
+        />  
+
+        
+        <div class="navButtons">
+          <button type="button" class="prevStep " onclick="prevSlide(this.parentElement.parentElement)"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+          <button type="submit" class="nextStep registerBtn" onclick="nextSlide(this.parentElement.parentElement)"><div class="loading glass"><div class="el"></div></div><span>Submit</span> <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <input type="hidden" name="time">
+      </form>
+    </section>
+  </body>
+</html>
+
+

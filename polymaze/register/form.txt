@@ -1,0 +1,49 @@
+Welcome to Polymaze, an exhilarating robotic competition where innovation meets adventure! This is your chance to showcase your skills in programming, electronics, and mechanical design while competing against the brightest minds in robotics. Join us for an unforgettable experience filled with creativity and cutting-edge technology. Are you ready to take on the Polymaze challenge and prove your prowess? Sign up now and let your robotic journey begin! 
+
+--- 
+
+**Page 1
+Team Name
+Are you participating solo or with a team?
+If in a team, how many members? 
+
+**Page 2
+Email(s)
+First Name(s)
+Phone Number
+University
+Field of Study
+Year of Study
+Wilaya (Region)
+Date of Birth
+Picture of you (and your team members)
+Do you (or one of your team mates) need an accommodation (a place to stay) 
+
+**Page 3
+Have you or any team members previously participated in robotics competitions? (Yes/No)
+If yes, please provide details (competition name, year, achievements, etc.)
+Do you have any formal training or education in robotics? (Yes/No)
+If yes, please specify the type and duration of the training or education  
+
+Rate your proficiency in programming (Beginner / Intermediate / Advanced)  
+Rate your proficiency in electronics (Beginner / Intermediate / Advanced) 
+Rate your proficiency in mechanical design (Beginner / Intermediate / Advanced) 
+
+Do want to attend the workshops? (Where we will provide the basics of creating robots) 
+
+What inspired you to participate in Polymaze? 
+
+Is there anything else you would like to share or inquire about regarding the competition? 
+
+---
+
+
+
+
+Dear [Participant's Name],
+
+We are pleased to confirm that your registration for PolyMaze 2024 has been successfully received. Your application is now officially submitted!
+
+We wish you the best of luck with the selection process. If you have any further questions or concerns, please don't hesitate to contact us via our platforms
+
+Best regards,
