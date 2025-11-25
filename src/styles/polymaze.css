@@ -1,0 +1,844 @@
+@font-face {
+  font-family: 'Coolvetica';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Coolvetica'), url('/polymaze/font/coolvetica/coolvetica-rg.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Coolvetica light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Coolvetica'), url('/polymaze/font/coolvetica/coolvetica-condensed-rg.otf') format('opentype');
+}
+
+/* Polymaze specific styles - scoped under .polymaze-page */
+
+.polymaze-page {
+  --dark1: #040404;
+  --dark2: #121432;
+  --red: #fff38e;
+  --blue: #fff38e;
+  --light1: #F0F0FF;
+  --accent-color: #e2b205;
+}
+
+.polymaze-page {
+  background: var(--dark1);
+  color: var(--light1);
+  overflow-x: hidden;
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+.polymaze-page *::selection {
+  background: var(--accent-color);
+  color: var(--light1);
+}
+
+.polymaze-page h1 {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.polymaze-page p {
+  font-size: 1.2em;
+}
+
+.polymaze-page a,
+.polymaze-page button {
+  all: unset;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.polymaze-page span {
+  color: var(--accent-color);
+}
+
+.polymaze-page section {
+  padding: 1em clamp(2em, 7vw, 15em);
+  margin: 0 0 10vh;
+}
+
+/* Loader */
+.polymaze-page .polymaze-loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: var(--dark1);
+}
+
+.polymaze-page .polymaze-loader video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Register Button */
+.polymaze-page .registerBtn {
+  background: var(--accent-color);
+  border-radius: 1em;
+  border: var(--accent-color) 2px solid;
+  transition: 0.3s;
+  padding: 1em 2em;
+  font-size: 1.2em;
+}
+
+.polymaze-page .registerBtn span {
+  color: var(--light1);
+  margin-right: 0.8em;
+  transition: 0.3s;
+}
+
+.polymaze-page .registerBtn:hover {
+  color: var(--accent-color);
+  background: none;
+  padding: 1em 1.3em 1em 2em;
+}
+
+.polymaze-page .registerBtn:hover span {
+  margin-right: 1.5em;
+  color: var(--accent-color);
+}
+
+/* Button style */
+.polymaze-page .button {
+  font-size: 1.2em;
+  border-radius: 1em;
+  background: linear-gradient(180deg, rgb(56, 56, 56) 0%, rgb(36, 36, 36) 66%, rgb(41, 41, 41) 100%);
+  color: var(--light1);
+  border: none;
+  padding: 2px;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.polymaze-page .button span {
+  border-radius: 1em;
+  padding: 1em 2rem;
+  padding-right: 1.2em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  transition: all 0.3s;
+  background-color: rgb(29, 29, 29);
+  background-image: radial-gradient(at 95% 89%, rgb(15, 15, 15) 0px, transparent 50%), radial-gradient(at 0% 100%, rgb(17, 17, 17) 0px, transparent 50%), radial-gradient(at 0% 0%, rgb(29, 29, 29) 0px, transparent 50%);
+}
+
+.polymaze-page .button:hover span {
+  background-color: rgb(26, 25, 25);
+}
+
+.polymaze-page .button-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-conic-gradient(rgb(48, 47, 47) 0.0000001%, rgb(51, 51, 51) 0.000104%) 60% 60%/600% 600%;
+  filter: opacity(10%) contrast(105%);
+  -webkit-filter: opacity(10%) contrast(105%);
+}
+
+.polymaze-page .button svg {
+  width: 15px;
+  height: 1.2em;
+  color: var(--light1);
+  fill: currentColor;
+}
+
+.polymaze-page .button svg * {
+  font-size: 2em;
+  color: var(--light1);
+  stroke: var(--light1) !important;
+}
+
+/* Section Title */
+.polymaze-page h2.sectionTitle {
+  font-size: 2.4em;
+  margin: .5rem 0 1.5em;
+  color: var(--accent-color);
+  position: relative;
+  padding: 0.5em 0;
+  font-weight: 700;
+}
+
+.polymaze-page h2.sectionTitle::after {
+  content: '';
+  background-color: var(--accent-color);
+  position: absolute;
+  height: 0.15em;
+  width: 120px;
+  border-radius: 100vmax;
+  left: 0;
+  bottom: 0;
+}
+
+.polymaze-page h2 img {
+  height: 1em;
+  fill: var(--accent-color);
+}
+
+/* Home Section */
+.polymaze-page #home {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 3em;
+  min-height: 100vh;
+  position: relative;
+}
+
+.polymaze-page section.hasLights {
+  position: relative;
+}
+
+.polymaze-page section.hasLights::after,
+.polymaze-page section.hasLights::before {
+  content: '';
+  position: absolute;
+  width: min(70vh, 100vw);
+  height: min(150vh, 150vw);
+  opacity: 0.1;
+  z-index: -5;
+  filter: blur(10px);
+}
+
+.polymaze-page section.hasLights::after {
+  background: radial-gradient(at left, var(--blue), #00000000 70%);
+  bottom: max(-70vh, -100vw);
+  left: 0vh;
+}
+
+.polymaze-page section.hasLights::before {
+  background: radial-gradient(at right, var(--red), #00000000 70%);
+  top: max(-70vh, -100vw);
+  right: 0;
+  z-index: 5;
+}
+
+.polymaze-page #home h1 {
+  font-size: 2.5em;
+  margin-bottom: 1.8em;
+}
+
+.polymaze-page #home p {
+  margin-bottom: 1.8em;
+}
+
+.polymaze-page .glass {
+  background: #12143245;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.9px);
+  -webkit-backdrop-filter: blur(6.9px);
+  border: 1px solid rgba(222, 234, 178, 0.4);
+  padding: 5vh 3em;
+  border-radius: 1em;
+}
+
+.polymaze-page .homeBtns {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
+/* Countdown Section */
+.polymaze-page #countdown {
+  padding: 10vh;
+  min-height: 40vh;
+  background: url(/polymaze/images/winners.JPG);
+  background-size: cover;
+  background-position: 100% 30%;
+  position: relative;
+}
+
+.polymaze-page #countdown .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #032c1f89;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.9px);
+  -webkit-backdrop-filter: blur(6.9px);
+  z-index: 0;
+}
+
+.polymaze-page #countdown h2 {
+  margin-bottom: 1em;
+}
+
+.polymaze-page #countdown .container,
+.polymaze-page #countdown h2 {
+  z-index: 20;
+  position: relative;
+  text-align: center;
+  font-size: 5em;
+  font-weight: 400;
+}
+
+.polymaze-page #countdown .container {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.polymaze-page #countdown .container p {
+  position: relative;
+}
+
+.polymaze-page #countdown .container p:after {
+  content: 'ad';
+  color: var(--accent-color);
+  font-size: 0.2em;
+  font-weight: 400;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -1rem;
+}
+
+.polymaze-page #countdown .container .days p:after {
+  content: 'days';
+}
+
+.polymaze-page #countdown .container .hours p:after {
+  content: 'hours';
+}
+
+.polymaze-page #countdown .container .minutes p:after {
+  content: 'minutes';
+}
+
+.polymaze-page #countdown .container .seconds p:after {
+  content: 'seconds';
+}
+
+/* Polymaze Section */
+.polymaze-page #polymaze p {
+  display: inline;
+  font-size: 1.6em;
+}
+
+.polymaze-page #polymaze .slider {
+  position: relative;
+}
+
+.polymaze-page #polymaze .slider1 {
+  margin-top: 7rem;
+}
+
+.polymaze-page #polymaze .slider2 {
+  margin-bottom: 7rem;
+}
+
+.polymaze-page #polymaze .slider .container::-webkit-scrollbar {
+  height: 0;
+}
+
+.polymaze-page #polymaze .slider .container {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem;
+  overflow-x: scroll;
+}
+
+.polymaze-page #polymaze .slider img {
+  width: 300px;
+  border-radius: 0.6rem;
+}
+
+.polymaze-page #polymaze .overlay {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background: linear-gradient(to right, var(--dark1) 0%, #00000000 20%, #00000000 80%, var(--dark1) 100%);
+  position: absolute;
+}
+
+/* Register Section */
+.polymaze-page #register p {
+  font-size: 1.6em;
+  padding: 0.5em 2em 1em;
+  margin: 1.5em 1em;
+}
+
+.polymaze-page #register p:not(:last-child) {
+  border-left: var(--accent-color) 4px solid;
+}
+
+.polymaze-page #register h3 {
+  font-size: 2em;
+  padding: 0 3em;
+  position: relative;
+}
+
+.polymaze-page #register h3::after {
+  position: absolute;
+  content: attr(data-num);
+  color: var(--light1);
+  background: var(--accent-color);
+  border-radius: 100vmax;
+  width: 2em;
+  height: 2em;
+  display: grid;
+  place-items: center;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+/* FAQ Section */
+.polymaze-page #faq .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: center;
+}
+
+.polymaze-page #faq .el {
+  max-width: 70em;
+  width: 100%;
+  margin: auto;
+  border-bottom: var(--accent-color) solid 1px;
+  display: flex;
+  overflow-y: hidden;
+  transition: 0.3s;
+}
+
+.polymaze-page #faq .el .question,
+.polymaze-page #faq .el .plusSign {
+  cursor: pointer;
+}
+
+.polymaze-page #faq .el .question,
+.polymaze-page #faq .el .answer,
+.polymaze-page #faq .el .plusSign {
+  padding: 2rem 1.5rem;
+}
+
+.polymaze-page #faq .el .answer {
+  font-size: 1.6em;
+  font-weight: 400;
+}
+
+.polymaze-page #faq .el .question {
+  font-size: 2em;
+  padding: 2rem 1.5rem;
+  font-weight: 600;
+}
+
+.polymaze-page #faq .el .content {
+  flex-grow: 1;
+}
+
+.polymaze-page #faq .el .answer,
+.polymaze-page #faq .el .plusSign {
+  flex-shrink: 0;
+}
+
+.polymaze-page #faq .el .plusSign {
+  box-sizing: content-box;
+  width: 3em;
+  height: 3em;
+}
+
+.polymaze-page #faq .el .plusSign * {
+  font-size: 2em;
+  color: white;
+  stroke: white !important;
+}
+
+/* Testimonies Section */
+.polymaze-page #testimonies .card {
+  background: #12143245;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.9px);
+  -webkit-backdrop-filter: blur(6.9px);
+  border: 1px solid rgba(143, 132, 112, 0.4);
+  padding: 2em;
+  border-radius: 1em;
+  flex-grow: 1;
+  flex-shrink: 0;
+  height: 100%;
+}
+
+.polymaze-page #testimonies .card .author {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.polymaze-page #testimonies .card .author img {
+  width: 70px;
+  border-radius: 100vmax;
+}
+
+.polymaze-page #testimonies .card .author .info {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  justify-content: flex-start;
+}
+
+.polymaze-page #testimonies .card .author .info .club {
+  color: #aaa;
+}
+
+.polymaze-page #testimonies .card .core {
+  font-size: 1.5em;
+  flex-grow: 1;
+}
+
+.polymaze-page .swiper {
+  overflow: unset;
+  overflow-x: hidden;
+  padding-bottom: 10em;
+}
+
+.polymaze-page .swiper-button-next,
+.polymaze-page .swiper-button-prev {
+  font-size: 3em;
+  position: relative;
+  color: var(--accent-color);
+}
+
+.polymaze-page .swiper-button-next::after,
+.polymaze-page .swiper-button-prev::after {
+  display: none;
+}
+
+.polymaze-page .swiper .navigations {
+  display: flex;
+  gap: 3rem;
+  position: absolute;
+  right: 2em;
+  bottom: 2em;
+}
+
+.polymaze-page .swiper-horizontal>.swiper-pagination-bullets,
+.polymaze-page .swiper-pagination-bullets.swiper-pagination-horizontal,
+.polymaze-page .swiper-pagination-custom,
+.polymaze-page .swiper-pagination-fraction {
+  bottom: 2em;
+}
+
+.polymaze-page .swiper-pagination-bullet {
+  background: var(--light1);
+}
+
+.polymaze-page .swiper-pagination-bullet-active {
+  background: var(--accent-color);
+}
+
+/* Special Thanks Section */
+.polymaze-page #specialThanks img {
+  max-width: 100%;
+  width: 300px;
+  margin: 3em 0;
+}
+
+.polymaze-page #specialThanks a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Specifications Section */
+.polymaze-page #specifications p {
+  margin-bottom: 3em;
+}
+
+.polymaze-page #specifications a {
+  margin-right: 2em;
+  margin-bottom: 2em;
+}
+
+/* Footer */
+.polymaze-page footer.glass {
+  border: none;
+  border-top: 1px solid rgba(222, 234, 178, 0.4);
+  border-radius: 1em 1em 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em clamp(2em, 10vw, 15em);
+}
+
+.polymaze-page footer .socials {
+  display: flex;
+  color: white;
+  font-size: 2em;
+  gap: 1em;
+}
+
+.polymaze-page footer img {
+  height: 50px;
+}
+
+/* Header Styles */
+.polymaze-page header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #12143245;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.9px);
+  -webkit-backdrop-filter: blur(6.9px);
+  border-bottom: 1px solid rgba(222, 234, 178, 0.4);
+  border-radius: 0 0 1em 1em;
+  padding: 1em clamp(2em, 10vw, 15em);
+  height: 10vh;
+  z-index: 999;
+}
+
+.polymaze-page header a {
+  all: unset;
+  cursor: pointer;
+  height: 100%;
+}
+
+.polymaze-page header a img {
+  margin-top: 5px;
+  max-height: 100%;
+}
+
+.polymaze-page header nav {
+  display: flex;
+  gap: 1em;
+}
+
+.polymaze-page header nav a {
+  padding: 1em 0.5em;
+  position: relative;
+  font-size: 1.3em;
+  color: white;
+}
+
+.polymaze-page header nav a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 5px;
+  border-radius: 100vmax;
+  transform: translateX(-50%);
+  transition: 0.4s ease;
+  background: var(--accent-color);
+  bottom: 0.5em;
+  left: 50%;
+}
+
+.polymaze-page header nav a:hover::after,
+.polymaze-page header nav a.active::after {
+  width: 100%;
+}
+
+.polymaze-page header.showOnMobile {
+  display: none;
+}
+
+.polymaze-page header.hideOnMobile {
+  display: flex;
+}
+
+.polymaze-page header button {
+  all: unset;
+  cursor: pointer;
+  color: white;
+}
+
+.polymaze-page header button * {
+  color: white;
+  stroke: white !important;
+}
+
+.polymaze-page .fixedWrapper {
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1em clamp(2em, 10vw, 15em);
+}
+
+/* Spline Viewer */
+.polymaze-page spline-viewer {
+  height: 90vh;
+}
+
+.polymaze-page #container {
+  background: #000;
+}
+
+.polymaze-page #logo {
+  display: none !important;
+}
+
+/* Swiper styles */
+.polymaze-page .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.polymaze-page .swiper-slide {
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1440px) {
+  .polymaze-page {
+    font-size: 15px;
+  }
+  .polymaze-page #polymaze .slider img {
+    width: 270px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .polymaze-page {
+    font-size: 13px;
+  }
+  .polymaze-page h1.sectionTitle {
+    margin-top: 2em;
+  }
+  .polymaze-page #polymaze .slider img {
+    width: 220px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .polymaze-page {
+    font-size: 12px;
+  }
+
+  .polymaze-page section {
+    padding: 1em clamp(2em, 6vw, 15em);
+  }
+
+  .polymaze-page .glass {
+    padding: 4vh 2em;
+  }
+
+  .polymaze-page h2 {
+    margin-top: 1.5em;
+  }
+
+  .polymaze-page .chunk~h2 {
+    margin-bottom: 2em;
+  }
+
+  .polymaze-page #home {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .polymaze-page #home .right {
+    order: 1;
+  }
+
+  .polymaze-page #home .left {
+    order: 2;
+  }
+
+  .polymaze-page spline-viewer {
+    height: 100vh;
+    position: relative;
+  }
+
+  .polymaze-page spline-viewer::after {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+  }
+
+  .polymaze-page #polymaze .slider img {
+    width: 190px;
+  }
+
+  .polymaze-page #register h3 {
+    padding: 0 2.5em;
+  }
+
+  .polymaze-page #countdown .container,
+  .polymaze-page #countdown h2 {
+    font-size: 4em;
+  }
+
+  .polymaze-page header.showOnMobile {
+    display: flex;
+    height: 10vh;
+    flex-direction: column;
+    transition: 0.5s ease-in-out;
+    padding: none;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .polymaze-page header.showOnMobile.active {
+    height: 100vh;
+  }
+
+  .polymaze-page header.hideOnMobile {
+    display: none;
+  }
+
+  .polymaze-page .showOnMobile nav {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20vh;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .polymaze-page {
+    font-size: 10.5px;
+  }
+
+  .polymaze-page section {
+    padding: 1em clamp(2em, 4vw, 10em);
+  }
+
+  .polymaze-page .glass {
+    padding: 2vh 1.4em;
+  }
+
+  .polymaze-page .smallInps,
+  .polymaze-page .chunk.sndchunk {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .polymaze-page #polymaze .slider img {
+    width: 140px;
+  }
+}
+
+/* Scrollbar */
+.polymaze-page::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.polymaze-page::-webkit-scrollbar-track {
+  background: none;
+}
+
+.polymaze-page::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 5px;
+}
