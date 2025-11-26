@@ -1,3 +1,6 @@
+/* Import Montserrat font for Polymaze */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @font-face {
   font-family: 'Coolvetica';
   font-style: normal;
@@ -12,8 +15,40 @@
   src: local('Coolvetica'), url('/polymaze/font/coolvetica/coolvetica-condensed-rg.otf') format('opentype');
 }
 
-/* Polymaze specific styles - scoped under .polymaze-page */
+/* ============================================
+   POLYMAZE - Complete CSS Reset & Isolation
+   This ensures Polymaze is independent from VIC main site
+   ============================================ */
 
+/* Override body styles when Polymaze page is active */
+body:has(.polymaze-page) {
+  background: none !important;
+  background-image: none !important;
+  background-color: #040404 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-width: 100vw;
+  overflow-x: hidden !important;
+}
+
+/* CSS Reset for polymaze-page - override all inherited VIC styles */
+/* Exclude Font Awesome icons from font-family override */
+.polymaze-page,
+.polymaze-page *:not(.fa):not(.fas):not(.far):not(.fab):not(.fa-solid):not(.fa-regular):not(.fa-brands):not([class*="fa-"]),
+.polymaze-page *::before:not(.fa)::before,
+.polymaze-page *::after:not(.fa)::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply Montserrat font but exclude Font Awesome elements */
+.polymaze-page,
+.polymaze-page *:not([class*="fa-"]):not(.fa):not(.fas):not(.far):not(.fab) {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* CSS Variables for Polymaze */
 .polymaze-page {
   --dark1: #040404;
   --dark2: #121432;
@@ -23,17 +58,49 @@
   --accent-color: #e2b205;
 }
 
+/* Main container - override ALL parent styles */
 .polymaze-page {
-  background: var(--dark1);
-  color: var(--light1);
+  background: var(--dark1) !important;
+  background-image: none !important;
+  color: var(--light1) !important;
   overflow-x: hidden;
   font-size: 16px;
   min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+  scroll-padding-top: 10vh;
+  position: relative;
+  /* Ensure no VIC background leaks through */
+  isolation: isolate;
+}
+
+/* Override generic img rules that may affect header logo */
+.polymaze-page img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* But specifically for header logo, use fixed sizing */
+.polymaze-page header a img {
+  max-width: none !important;
 }
 
 .polymaze-page *::selection {
   background: var(--accent-color);
   color: var(--light1);
+}
+
+/* Reset typography - override VIC fonts completely */
+/* Exclude Font Awesome from font overrides */
+.polymaze-page h1,
+.polymaze-page h2,
+.polymaze-page h3,
+.polymaze-page h4,
+.polymaze-page h5,
+.polymaze-page h6 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--light1);
+  line-height: 1.2;
 }
 
 .polymaze-page h1 {
@@ -43,34 +110,59 @@
 
 .polymaze-page p {
   font-size: 1.2em;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--light1);
 }
 
-.polymaze-page a,
-.polymaze-page button {
+.polymaze-page a:not([class*="fa-"]):not(header nav a),
+.polymaze-page button:not([class*="fa-"]) {
   all: unset;
   cursor: pointer;
   display: inline-block;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.polymaze-page span {
+.polymaze-page span:not([class*="fa-"]) {
   color: var(--accent-color);
+}
+
+.polymaze-page ul,
+.polymaze-page ol,
+.polymaze-page li {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Preserve Font Awesome icons - do NOT override their font-family */
+.polymaze-page .fa,
+.polymaze-page .fas,
+.polymaze-page .far,
+.polymaze-page .fab,
+.polymaze-page .fa-solid,
+.polymaze-page .fa-regular,
+.polymaze-page .fa-brands,
+.polymaze-page i[class*="fa-"] {
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
 }
 
 .polymaze-page section {
   padding: 1em clamp(2em, 7vw, 15em);
   margin: 0 0 10vh;
+  max-width: none;
+  background: transparent;
 }
 
 /* Loader */
 .polymaze-page .polymaze-loader {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
+  z-index: 10000;
   background: var(--dark1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .polymaze-page .polymaze-loader video {
@@ -81,62 +173,63 @@
 
 /* Register Button */
 .polymaze-page .registerBtn {
-  background: var(--accent-color);
-  border-radius: 1em;
-  border: var(--accent-color) 2px solid;
-  transition: 0.3s;
-  padding: 1em 2em;
-  font-size: 1.2em;
+  background: var(--accent-color) !important;
+  border-radius: 1em !important;
+  border: var(--accent-color) 2px solid !important;
+  transition: 0.3s !important;
+  padding: 1em 2em !important;
+  font-size: 1.2em !important;
+  display: inline-block !important;
 }
 
 .polymaze-page .registerBtn span {
-  color: var(--light1);
+  color: var(--light1) !important;
   margin-right: 0.8em;
   transition: 0.3s;
 }
 
 .polymaze-page .registerBtn:hover {
-  color: var(--accent-color);
-  background: none;
-  padding: 1em 1.3em 1em 2em;
+  color: var(--accent-color) !important;
+  background: none !important;
+  padding: 1em 1.3em 1em 2em !important;
 }
 
 .polymaze-page .registerBtn:hover span {
   margin-right: 1.5em;
-  color: var(--accent-color);
+  color: var(--accent-color) !important;
 }
 
-/* Button style */
+/* Button style (Watch trailer, Go back, etc) */
 .polymaze-page .button {
-  font-size: 1.2em;
-  border-radius: 1em;
-  background: linear-gradient(180deg, rgb(56, 56, 56) 0%, rgb(36, 36, 36) 66%, rgb(41, 41, 41) 100%);
-  color: var(--light1);
-  border: none;
-  padding: 2px;
-  font-weight: 700;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
+  font-size: 1.2em !important;
+  border-radius: 1em !important;
+  background: linear-gradient(180deg, rgb(56, 56, 56) 0%, rgb(36, 36, 36) 66%, rgb(41, 41, 41) 100%) !important;
+  color: var(--light1) !important;
+  border: none !important;
+  padding: 2px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
+  display: inline-block !important;
 }
 
 .polymaze-page .button span {
-  border-radius: 1em;
-  padding: 1em 2rem;
-  padding-right: 1.2em;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: inherit;
-  transition: all 0.3s;
-  background-color: rgb(29, 29, 29);
-  background-image: radial-gradient(at 95% 89%, rgb(15, 15, 15) 0px, transparent 50%), radial-gradient(at 0% 100%, rgb(17, 17, 17) 0px, transparent 50%), radial-gradient(at 0% 0%, rgb(29, 29, 29) 0px, transparent 50%);
+  border-radius: 1em !important;
+  padding: 1em 2rem !important;
+  padding-right: 1.2em !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  color: inherit !important;
+  transition: all 0.3s !important;
+  background-color: rgb(29, 29, 29) !important;
+  background-image: radial-gradient(at 95% 89%, rgb(15, 15, 15) 0px, transparent 50%), radial-gradient(at 0% 100%, rgb(17, 17, 17) 0px, transparent 50%), radial-gradient(at 0% 0%, rgb(29, 29, 29) 0px, transparent 50%) !important;
 }
 
 .polymaze-page .button:hover span {
-  background-color: rgb(26, 25, 25);
+  background-color: rgb(26, 25, 25) !important;
 }
 
 .polymaze-page .button-overlay {
@@ -159,6 +252,11 @@
   font-size: 2em;
   color: var(--light1);
   stroke: var(--light1) !important;
+}
+
+.polymaze-page .ytblogo {
+  width: 1.5em;
+  height: 1em;
 }
 
 /* Section Title */
@@ -195,6 +293,7 @@
   gap: 3em;
   min-height: 100vh;
   position: relative;
+  padding-top: 12vh;
 }
 
 .polymaze-page section.hasLights {
@@ -351,11 +450,14 @@
   gap: 1rem;
   margin: 1rem;
   overflow-x: scroll;
+  scroll-behavior: auto;
 }
 
 .polymaze-page #polymaze .slider img {
   width: 300px;
+  height: auto;
   border-radius: 0.6rem;
+  object-fit: cover;
 }
 
 .polymaze-page #polymaze .overlay {
@@ -364,6 +466,8 @@
   left: 0;
   background: linear-gradient(to right, var(--dark1) 0%, #00000000 20%, #00000000 80%, var(--dark1) 100%);
   position: absolute;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Register Section */
@@ -373,7 +477,7 @@
   margin: 1.5em 1em;
 }
 
-.polymaze-page #register p:not(:last-child) {
+.polymaze-page #register p:not(:last-of-type) {
   border-left: var(--accent-color) 4px solid;
 }
 
@@ -482,7 +586,9 @@
 
 .polymaze-page #testimonies .card .author img {
   width: 70px;
+  height: 70px;
   border-radius: 100vmax;
+  object-fit: cover;
 }
 
 .polymaze-page #testimonies .card .author .info {
@@ -490,6 +596,10 @@
   flex-direction: column;
   gap: .5em;
   justify-content: flex-start;
+}
+
+.polymaze-page #testimonies .card .author .info .name {
+  font-weight: 600;
 }
 
 .polymaze-page #testimonies .card .author .info .club {
@@ -505,6 +615,17 @@
   overflow: unset;
   overflow-x: hidden;
   padding-bottom: 10em;
+  width: 100%;
+  height: 100%;
+}
+
+.polymaze-page .swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.polymaze-page .swiper-slide {
+  height: auto;
 }
 
 .polymaze-page .swiper-button-next,
@@ -565,7 +686,18 @@
   margin-bottom: 2em;
 }
 
+/* About Us Section */
+.polymaze-page #Aboutus p {
+  font-size: 1.6em;
+  line-height: 1.8;
+}
+
 /* Footer */
+.polymaze-page footer {
+  max-width: none !important;
+  margin: 0 !important;
+}
+
 .polymaze-page footer.glass {
   border: none;
   border-top: 1px solid rgba(222, 234, 178, 0.4);
@@ -574,6 +706,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1em clamp(2em, 10vw, 15em);
+  margin: 0;
 }
 
 .polymaze-page footer .socials {
@@ -581,6 +714,15 @@
   color: white;
   font-size: 2em;
   gap: 1em;
+}
+
+.polymaze-page footer .socials a {
+  color: white;
+  transition: 0.3s;
+}
+
+.polymaze-page footer .socials a:hover {
+  color: var(--accent-color);
 }
 
 .polymaze-page footer img {
@@ -605,47 +747,72 @@
   padding: 1em clamp(2em, 10vw, 15em);
   height: 10vh;
   z-index: 999;
+  max-width: none !important;
+  margin: 0 !important;
+  transform: none !important;
 }
 
-.polymaze-page header a {
+/* Logo link only */
+.polymaze-page header > a:first-child {
   all: unset;
   cursor: pointer;
   height: 100%;
+  display: flex;
+  align-items: center;
 }
 
-.polymaze-page header a img {
-  margin-top: 5px;
-  max-height: 100%;
+.polymaze-page header a img,
+.polymaze-page header > a > img {
+  height: 6vh !important;
+  width: auto !important;
+  max-height: 6vh !important;
+  object-fit: contain !important;
+  margin: 0 !important;
 }
 
 .polymaze-page header nav {
   display: flex;
-  gap: 1em;
+  gap: 0.5em;
+  margin-left: 1.5em;
 }
 
 .polymaze-page header nav a {
-  padding: 1em 0.5em;
-  position: relative;
-  font-size: 1.3em;
-  color: white;
+  padding: 0.25em 0.4em !important;
+  position: relative !important;
+  font-size: 1.1em !important;
+  color: white !important;
+  text-transform: uppercase !important;
+  transition: 0.3s cubic-bezier(0, .82, .55, 1.01) !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
 }
 
-.polymaze-page header nav a:after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 5px;
-  border-radius: 100vmax;
-  transform: translateX(-50%);
-  transition: 0.4s ease;
-  background: var(--accent-color);
-  bottom: 0.5em;
-  left: 50%;
+.polymaze-page header nav a:hover,
+.polymaze-page header nav a.active {
+  color: var(--accent-color) !important;
+}
+
+.polymaze-page header nav a.active {
+  font-weight: 700 !important;
+}
+
+.polymaze-page header nav a::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 2px !important;
+  border-radius: 100vmax !important;
+  background: var(--accent-color) !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  transition: 0.3s cubic-bezier(0, .82, .55, 1.01) !important;
+  display: block !important;
 }
 
 .polymaze-page header nav a:hover::after,
 .polymaze-page header nav a.active::after {
-  width: 100%;
+  width: 100% !important;
 }
 
 .polymaze-page header.showOnMobile {
@@ -671,8 +838,33 @@
   height: 10vh;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 1em clamp(2em, 10vw, 15em);
+  background: rgba(18, 20, 50, 0.45);
+  backdrop-filter: blur(6.9px);
+  -webkit-backdrop-filter: blur(6.9px);
+  z-index: 10;
+}
+
+.polymaze-page .fixedWrapper .logoLink {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.polymaze-page .fixedWrapper .logoLink img {
+  max-height: 6vh !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+.polymaze-page .navToggleWrapper {
+  width: 3em;
+  height: 3em;
+  background: transparent;
+  border: none;
 }
 
 /* Spline Viewer */
@@ -686,15 +878,6 @@
 
 .polymaze-page #logo {
   display: none !important;
-}
-
-/* Swiper styles */
-.polymaze-page .swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.polymaze-page .swiper-slide {
 }
 
 /* Responsive Styles */
@@ -711,7 +894,7 @@
   .polymaze-page {
     font-size: 13px;
   }
-  .polymaze-page h1.sectionTitle {
+  .polymaze-page h2.sectionTitle {
     margin-top: 2em;
   }
   .polymaze-page #polymaze .slider img {
@@ -753,8 +936,11 @@
   }
 
   .polymaze-page spline-viewer {
-    height: 100vh;
+    height: 50vh;
+    max-height: 400px;
     position: relative;
+    width: 100%;
+    overflow: hidden;
   }
 
   .polymaze-page spline-viewer::after {
@@ -784,13 +970,25 @@
     height: 10vh;
     flex-direction: column;
     transition: 0.5s ease-in-out;
-    padding: none;
-    overflow: hidden;
     padding: 0;
+    overflow: hidden;
+    z-index: 9999;
+  }
+
+  .polymaze-page header.showOnMobile nav {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
   }
 
   .polymaze-page header.showOnMobile.active {
     height: 100vh;
+    background: rgba(4, 4, 4, 0.98);
+  }
+
+  .polymaze-page header.showOnMobile.active nav {
+    opacity: 1;
+    visibility: visible;
   }
 
   .polymaze-page header.hideOnMobile {
@@ -802,7 +1000,30 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 20vh;
+    top: 15vh;
+    width: 100%;
+    display: flex;
+    gap: 0.5em;
+  }
+  
+  .polymaze-page .showOnMobile nav a {
+    font-size: 1.5em !important;
+    padding: 0.8em 1em !important;
+    color: white !important;
+    text-transform: uppercase !important;
+    display: block !important;
+    text-align: center;
+    width: 100%;
+  }
+
+  .polymaze-page .showOnMobile nav a.active,
+  .polymaze-page .showOnMobile nav a:hover {
+    color: var(--accent-color) !important;
+  }
+
+  .polymaze-page .homeBtns {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -840,5 +1061,120 @@
 
 .polymaze-page::-webkit-scrollbar-thumb {
   background: var(--accent-color);
+  border-radius: 5px;
+}
+
+/* ============================================
+   OVERRIDE VIC MAIN STYLES
+   These ensure complete visual isolation
+   ============================================ */
+
+/* Override VIC fonts - exclude Font Awesome */
+.polymaze-page h1:not([class*="fa-"]),
+.polymaze-page h2:not([class*="fa-"]),
+.polymaze-page header a:not([class*="fa-"]),
+.polymaze-page header button:not([class*="fa-"]) {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Override VIC body background */
+.polymaze-page {
+  background-image: none !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Override VIC header styles */
+.polymaze-page header {
+  margin: 0 !important;
+  max-width: 100% !important;
+  transform: none !important;
+  position: fixed !important;
+  left: 0 !important;
+}
+
+/* Override VIC section max-width */
+.polymaze-page section {
+  max-width: 100% !important;
+}
+
+/* Override VIC footer styles */
+.polymaze-page footer {
+  max-width: 100% !important;
+  padding-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Override VIC expBtn style if applied */
+.polymaze-page .expBtn {
+  padding: 1em 0.5em;
+  border: none;
+  color: white;
+  font-size: 1.3em;
+}
+
+/* Override VIC FAQ styles */
+.polymaze-page #faq {
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 1em clamp(2em, 7vw, 15em) !important;
+  text-align: left !important;
+}
+
+.polymaze-page #faq p.title,
+.polymaze-page .bfaq {
+  display: none;
+}
+
+.polymaze-page .faqContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  gap: 1em;
+  width: 100%;
+}
+
+.polymaze-page .faqContainer .question {
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Override VIC CTA styles */
+.polymaze-page #cta {
+  background: transparent !important;
+  padding: 1em clamp(2em, 7vw, 15em) !important;
+  border: none !important;
+}
+
+/* Override VIC descriptionSec */
+.polymaze-page .descriptionSec {
+  font-size: 1em;
+  padding: 1em 0;
+  gap: 2em;
+}
+
+/* Ensure Polymaze images don't get VIC styles */
+.polymaze-page img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Override any VIC animation classes */
+.polymaze-page .animationptx {
+  min-width: 30px;
+}
+
+/* Custom scrollbar for html when polymaze is active */
+html:has(.polymaze-page)::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+html:has(.polymaze-page)::-webkit-scrollbar-track {
+  background: #040404;
+}
+
+html:has(.polymaze-page)::-webkit-scrollbar-thumb {
+  background: #e2b205;
   border-radius: 5px;
 }

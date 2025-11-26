@@ -4,11 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-interface PolymazeHeaderProps {
-  isLoading: boolean
-}
-
-export default function PolymazeHeader({ isLoading }: PolymazeHeaderProps) {
+export default function PolymazeHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const animContainerRef = useRef<HTMLButtonElement>(null)
@@ -16,6 +12,7 @@ export default function PolymazeHeader({ isLoading }: PolymazeHeaderProps) {
   const animDirectionRef = useRef(1)
 
   useEffect(() => {
+    // Initialize Lottie animation for mobile menu
     if (typeof window !== 'undefined' && (window as any).lottie && animContainerRef.current && !animRef.current) {
       animRef.current = (window as any).lottie.loadAnimation({
         container: animContainerRef.current,
@@ -25,27 +22,42 @@ export default function PolymazeHeader({ isLoading }: PolymazeHeaderProps) {
         path: '/polymaze/Menu V2/menuV2.json'
       })
     }
-  }, [isLoading])
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'polymaze', 'register', 'faq', 'specifications', 'testimonies', 'Aboutus']
       const scrollY = window.scrollY
-      const screenH = window.innerHeight
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i])
-        if (section) {
-          const top = section.offsetTop - screenH / 3
-          if (scrollY >= top) {
-            setActiveSection(sections[i])
-            break
-          }
-        }
+      const homeSec = document.getElementById('home')
+      const polymSec = document.getElementById('polymaze')
+      const regSec = document.getElementById('register')
+      const faqSec = document.getElementById('faq')
+      const specSec = document.getElementById('specifications')
+      const testSec = document.getElementById('testimonies')
+      const abtSec = document.getElementById('Aboutus')
+
+      if (!homeSec || !polymSec || !regSec || !faqSec || !specSec || !testSec || !abtSec) return
+
+      // Logic from original header.js - adjusted for removed countdown section
+      if (scrollY <= homeSec.offsetHeight) {
+        setActiveSection('home')
+      } else if (scrollY >= homeSec.offsetHeight && scrollY < polymSec.offsetHeight + polymSec.offsetTop - 100) {
+        setActiveSection('polymaze')
+      } else if (scrollY >= polymSec.offsetHeight + polymSec.offsetTop && scrollY < regSec.offsetHeight + regSec.offsetTop - 100) {
+        setActiveSection('register')
+      } else if (scrollY >= regSec.offsetHeight + regSec.offsetTop && scrollY < faqSec.offsetHeight + faqSec.offsetTop - 100) {
+        setActiveSection('faq')
+      } else if (scrollY >= faqSec.offsetHeight + faqSec.offsetTop && scrollY < specSec.offsetHeight + specSec.offsetTop - 100) {
+        setActiveSection('specifications')
+      } else if (scrollY >= specSec.offsetHeight + specSec.offsetTop && scrollY < testSec.offsetHeight + testSec.offsetTop - 100) {
+        setActiveSection('testimonies')
+      } else if (scrollY >= testSec.offsetHeight + testSec.offsetTop) {
+        setActiveSection('Aboutus')
       }
     }
 
     window.addEventListener('scroll', handleScroll)
+    // Initial check
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -59,7 +71,10 @@ export default function PolymazeHeader({ isLoading }: PolymazeHeaderProps) {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
-  if (isLoading) return null
+  const handleNavClick = (sectionId: string) => {
+    setActiveSection(sectionId)
+    setMobileMenuOpen(false)
+  }
 
   const navItems = [
     { href: '#home', label: 'Home', id: 'home' },
@@ -81,7 +96,7 @@ export default function PolymazeHeader({ isLoading }: PolymazeHeaderProps) {
             alt="POLYMAZE"
             width={200}
             height={50}
-            style={{ height: '100%', width: 'auto' }}
+            style={{ height: '6vh', width: 'auto', maxWidth: 'none', objectFit: 'contain' }}
           />
         </Link>
         <nav>
@@ -90,6 +105,7 @@ export default function PolymazeHeader({ isLoading }: PolymazeHeaderProps) {
               key={item.id}
               href={item.href}
               className={`navLink ${item.id} ${activeSection === item.id ? 'active' : ''}`}
+              onClick={() => handleNavClick(item.id)}
             >
               {item.label}
             </a>
@@ -100,13 +116,13 @@ export default function PolymazeHeader({ isLoading }: PolymazeHeaderProps) {
       {/* Mobile Header */}
       <header className={`showOnMobile ${mobileMenuOpen ? 'active' : ''}`}>
         <div className="fixedWrapper">
-          <Link href="/polymaze">
+          <Link href="/polymaze" className="logoLink">
             <Image
               src="/polymaze/logo-h-02.png"
               alt="POLYMAZE"
               width={200}
               height={50}
-              style={{ height: '100%', width: 'auto' }}
+              style={{ height: 'auto', width: 'auto', maxHeight: '100%', objectFit: 'contain' }}
             />
           </Link>
           <button
@@ -122,7 +138,7 @@ export default function PolymazeHeader({ isLoading }: PolymazeHeaderProps) {
               key={item.id}
               href={item.href}
               className={`navLink ${item.id} ${activeSection === item.id ? 'active' : ''}`}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => handleNavClick(item.id)}
             >
               {item.label}
             </a>

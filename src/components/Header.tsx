@@ -18,11 +18,30 @@ interface HeaderProps {
 export default function Header({ showExploreBtn = true }: HeaderProps) {
   const pathname = usePathname()
   const [navStatus, setNavStatus] = useState(0)
+  const [scrolled, setScrolled] = useState(false)
   const { isLoading } = useLoading()
   const navanim1Ref = useRef<any>(null)
   const navanim2Ref = useRef<any>(null)
   const ocanimfRef = useRef<HTMLDivElement>(null)
   const ocanimdRef = useRef<HTMLDivElement>(null)
+
+  // Handle scroll for dynamic header visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById('hero')
+      if (heroSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight
+        setScrolled(window.scrollY > heroBottom - 100)
+      } else {
+        // If no hero section, show after scrolling 100vh
+        setScrolled(window.scrollY > window.innerHeight - 100)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Check initial state
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.lottie) {
@@ -86,7 +105,7 @@ export default function Header({ showExploreBtn = true }: HeaderProps) {
 
   return (
     <>
-      <header id="header-desk-dynamic">
+      <header id="header-desk-dynamic" className={scrolled ? 'active' : ''}>
         <Link href="/"><img src="/header-logo.svg" alt="" /></Link>
         <nav>
           <Link href="/" className={getActiveClass('/')}>home</Link>
@@ -139,7 +158,7 @@ export default function Header({ showExploreBtn = true }: HeaderProps) {
         </nav>
       </header>
 
-      <header id="header-mob-dynamic">
+      <header id="header-mob-dynamic" className={scrolled ? 'active' : ''}>
         <div className="navmobiletop">
           <Link href="/"><img src="/mobile-header-logo.svg" alt="" /></Link>
           <div 

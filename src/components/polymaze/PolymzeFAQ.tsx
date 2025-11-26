@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 interface FAQItem {
   question: string
@@ -32,28 +32,60 @@ const faqData: FAQItem[] = [
 
 export default function PolymzeFAQ() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
-  const questionRefs = useRef<(HTMLDivElement | null)[]>([])
+  const elRefs = useRef<(HTMLDivElement | null)[]>([])
   const animRefs = useRef<any[]>([])
   const animDirs = useRef<number[]>(faqData.map(() => 1))
+  const [heights, setHeights] = useState<string[]>(faqData.map(() => 'auto'))
 
+  // Initialize lottie animations
   useEffect(() => {
-    if (typeof window !== 'undefined' && (window as any).lottie) {
-      faqData.forEach((_, index) => {
-        const container = document.querySelector(`#polymaze-faq-plus-${index}`)
-        if (container && !animRefs.current[index]) {
-          animRefs.current[index] = (window as any).lottie.loadAnimation({
-            container: container,
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            path: '/polymaze/Plus to X/plusToX.json'
-          })
-        }
-      })
+    const initAnims = () => {
+      if (typeof window !== 'undefined' && (window as any).lottie) {
+        faqData.forEach((_, index) => {
+          const container = document.querySelector(`#polymaze-faq-plus-${index}`)
+          if (container && !animRefs.current[index]) {
+            animRefs.current[index] = (window as any).lottie.loadAnimation({
+              container: container,
+              renderer: 'svg',
+              loop: false,
+              autoplay: false,
+              path: '/polymaze/Plus to X/plusToX.json'
+            })
+          }
+        })
+      }
     }
+    
+    // Try immediately and after a delay
+    initAnims()
+    const timer = setTimeout(initAnims, 1000)
+    return () => clearTimeout(timer)
   }, [])
 
-  const toggleFaq = (index: number) => {
+  // Calculate heights after mount
+  useEffect(() => {
+    const calculateHeights = () => {
+      const newHeights = faqData.map((_, index) => {
+        const el = elRefs.current[index]
+        if (!el) return 'auto'
+        const question = el.querySelector('.question') as HTMLElement
+        return question ? `${question.offsetHeight}px` : 'auto'
+      })
+      setHeights(newHeights)
+    }
+    
+    calculateHeights()
+    window.addEventListener('resize', calculateHeights)
+    return () => window.removeEventListener('resize', calculateHeights)
+  }, [])
+
+  const toggleFaq = useCallback((index: number) => {
+    const el = elRefs.current[index]
+    if (!el) return
+
+    const question = el.querySelector('.question') as HTMLElement
+    const answer = el.querySelector('.answer') as HTMLElement
+    
     // Animate the plus sign
     if (animRefs.current[index]) {
       animRefs.current[index].setDirection(animDirs.current[index])
@@ -63,30 +95,42 @@ export default function PolymzeFAQ() {
 
     // If clicking the active item, close it
     if (activeIndex === index) {
+      setHeights(prev => {
+        const newHeights = [...prev]
+        newHeights[index] = question ? `${question.offsetHeight}px` : 'auto'
+        return newHeights
+      })
       setActiveIndex(null)
     } else {
       // Close the previous one with animation
-      if (activeIndex !== null && animRefs.current[activeIndex]) {
-        animRefs.current[activeIndex].setDirection(animDirs.current[activeIndex])
-        animRefs.current[activeIndex].play()
-        animDirs.current[activeIndex] *= -1
+      if (activeIndex !== null) {
+        const prevEl = elRefs.current[activeIndex]
+        const prevQuestion = prevEl?.querySelector('.question') as HTMLElement
+        
+        if (animRefs.current[activeIndex]) {
+          animRefs.current[activeIndex].setDirection(animDirs.current[activeIndex])
+          animRefs.current[activeIndex].play()
+          animDirs.current[activeIndex] *= -1
+        }
+        
+        setHeights(prev => {
+          const newHeights = [...prev]
+          newHeights[activeIndex] = prevQuestion ? `${prevQuestion.offsetHeight}px` : 'auto'
+          return newHeights
+        })
       }
+      
+      // Open the new one
+      setHeights(prev => {
+        const newHeights = [...prev]
+        newHeights[index] = question && answer 
+          ? `${question.offsetHeight + answer.offsetHeight}px` 
+          : 'auto'
+        return newHeights
+      })
       setActiveIndex(index)
     }
-  }
-
-  const getHeight = (index: number) => {
-    const questionEl = questionRefs.current[index]
-    if (!questionEl) return 'auto'
-    
-    const question = questionEl.querySelector('.question') as HTMLElement
-    const answer = questionEl.querySelector('.answer') as HTMLElement
-    
-    if (activeIndex === index && question && answer) {
-      return `${question.offsetHeight + answer.offsetHeight}px`
-    }
-    return question ? `${question.offsetHeight}px` : 'auto'
-  }
+  }, [activeIndex])
 
   return (
     <section id="faq">
@@ -96,8 +140,8 @@ export default function PolymzeFAQ() {
           <div
             key={index}
             className={`el ${activeIndex === index ? 'active' : ''}`}
-            ref={el => { questionRefs.current[index] = el }}
-            style={{ height: getHeight(index) }}
+            ref={el => { elRefs.current[index] = el }}
+            style={{ height: heights[index] }}
           >
             <div
               className="plusSign"

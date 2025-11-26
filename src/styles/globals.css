@@ -1145,3 +1145,125 @@ footer .bottom {
    margin: 0 auto;
    line-height: 1.8;
 }
+
+/* Events Page Styles */
+.events-section {
+   padding: 1.5em 2em;
+   max-width: 1200px;
+   margin: 0 auto;
+}
+
+.events-section:first-of-type {
+   margin-top: -150px;
+}
+
+.year-title {
+   font-family: 'Odibee Sans', sans-serif;
+   font-size: 6em;
+   text-align: center;
+   margin-bottom: 0.3em;
+}
+
+.events-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   gap: 2em;
+   justify-items: center;
+}
+
+.events-grid.single {
+   grid-template-columns: 1fr;
+   max-width: 450px;
+   margin: 0 auto;
+}
+
+.event-card {
+   background: rgba(24, 88, 126, 0.2);
+   border-radius: 1em;
+   overflow: hidden;
+   transition: transform 0.3s var(--an), box-shadow 0.3s var(--an);
+   width: 100%;
+   max-width: 400px;
+}
+
+.event-card:hover {
+   transform: translateY(-10px);
+   box-shadow: 0 20px 40px rgba(43, 149, 212, 0.3);
+}
+
+.event-preview {
+   position: relative;
+   overflow: hidden;
+   aspect-ratio: 16 / 9;
+}
+
+.event-preview img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: transform 0.3s ease;
+}
+
+.event-card:hover .event-preview img {
+   transform: scale(1.05);
+}
+
+.event-overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: rgba(43, 149, 212, 0.8);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   opacity: 0;
+   transition: opacity 0.3s ease;
+}
+
+.event-card:hover .event-overlay {
+   opacity: 1;
+}
+
+.event-overlay span {
+   color: white;
+   font-size: 1.2em;
+   font-weight: 600;
+   display: flex;
+   align-items: center;
+   gap: 0.5em;
+}
+
+.event-card h4 {
+   padding: 1em;
+   text-align: center;
+   color: var(--l2);
+   font-size: 1.4em;
+   font-family: 'Odibee Sans', sans-serif;
+   background: rgba(15, 20, 21, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+   .year-title {
+      font-size: 4em;
+   }
+   
+   .events-grid {
+      grid-template-columns: 1fr;
+   }
+   
+   .event-card {
+      max-width: 350px;
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .year-title {
+      font-size: 3em;
+   }
+   
+   .events-section {
+      padding: 2em 1em;
+   }
+}

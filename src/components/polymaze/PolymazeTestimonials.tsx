@@ -93,7 +93,7 @@ export default function PolymazeTestimonials() {
       <h2 className="sectionTitle">Testimonies</h2>
 
       <div className="swiper mySwiper">
-        <div className="container swiper-wrapper">
+        <div className="swiper-wrapper">
           {testimonies.map((testimony, index) => (
             <div key={index} className="card swiper-slide">
               <div className="author">
