@@ -30,6 +30,7 @@ a,
 button {
    all: unset;
    cursor: pointer;
+   font-family: 'Outfit', sans-serif;
 }
 
 h1,
@@ -66,6 +67,7 @@ body {
    background-size: 100%;
    /* min-width: 100vw; */
    position: relative;
+   font-family: 'Outfit', sans-serif;
 }
 
 section,
@@ -267,7 +269,145 @@ header img {
    }
 }
 
+/* Highlighted Event Section */
+#highlighted-event {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 4em;
+   padding: 8vh 2em;
+   max-width: 1200px;
+   margin: 0 auto;
+}
 
+#highlighted-event .highlight-content {
+   flex: 1;
+   max-width: 500px;
+}
+
+#highlighted-event .highlight-badge {
+   display: inline-block;
+   background: linear-gradient(135deg, var(--b), var(--g));
+   color: white;
+   padding: 0.4em 1em;
+   border-radius: 100vmax;
+   font-size: 0.9em;
+   font-weight: 600;
+   margin-bottom: 1em;
+   text-transform: uppercase;
+   letter-spacing: 0.05em;
+}
+
+#highlighted-event .highlight-logo {
+   max-width: 100%;
+   height: auto;
+   margin-bottom: 0.5em;
+}
+
+#highlighted-event p {
+   color: var(--d2);
+   font-size: 1.2em;
+   line-height: 1.6;
+   margin-bottom: 1.5em;
+}
+
+#highlighted-event .highlight-btn {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.5em;
+   background: linear-gradient(135deg, var(--b), var(--g));
+   color: white;
+   padding: 1em 2em;
+   border-radius: 0.5em;
+   font-size: 1.1em;
+   font-weight: 600;
+   transition: transform 0.3s var(--an), box-shadow 0.3s var(--an);
+}
+
+#highlighted-event .highlight-btn:hover {
+   transform: translateY(-3px);
+   box-shadow: 0 10px 30px rgba(43, 149, 212, 0.4);
+}
+
+#highlighted-event .highlight-preview {
+   flex: 1;
+   max-width: 550px;
+   position: relative;
+   border-radius: 1em;
+   overflow: hidden;
+   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+   transition: transform 0.3s var(--an), box-shadow 0.3s var(--an);
+}
+
+#highlighted-event .highlight-preview:hover {
+   transform: translateY(-10px) scale(1.02);
+   box-shadow: 0 30px 80px rgba(43, 149, 212, 0.3);
+}
+
+#highlighted-event .highlight-overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: rgba(43, 149, 212, 0.85);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   opacity: 0;
+   transition: opacity 0.3s ease;
+}
+
+#highlighted-event .highlight-preview:hover .highlight-overlay {
+   opacity: 1;
+}
+
+#highlighted-event .highlight-overlay span {
+   color: white;
+   font-size: 1.3em;
+   font-weight: 600;
+   font-family: 'Outfit', sans-serif;
+   display: flex;
+   align-items: center;
+   gap: 0.5em;
+}
+
+@media screen and (max-width: 900px) {
+   #highlighted-event {
+      flex-direction: column;
+      text-align: center;
+      gap: 2em;
+      padding: 6vh 2em;
+   }
+   
+   #highlighted-event .highlight-content {
+      max-width: 100%;
+   }
+   
+   #highlighted-event .highlight-logo {
+      max-width: 300px;
+   }
+   
+   #highlighted-event .highlight-preview {
+      max-width: 100%;
+      width: 100%;
+   }
+}
+
+@media screen and (max-width: 500px) {
+   #highlighted-event .highlight-logo {
+      max-width: 250px;
+   }
+   
+   #highlighted-event p {
+      font-size: 1em;
+   }
+   
+   #highlighted-event .highlight-btn {
+      font-size: 1em;
+      padding: 0.8em 1.5em;
+   }
+}
 
 
 .descriptionSec {
@@ -1236,6 +1376,7 @@ footer .bottom {
    color: white;
    font-size: 1.2em;
    font-weight: 600;
+   font-family: 'Outfit', sans-serif;
    display: flex;
    align-items: center;
    gap: 0.5em;

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
@@ -62,6 +63,9 @@ export default function HomePage() {
     // ScrollReveal animations
     if (window.ScrollReveal) {
       window.ScrollReveal().reveal('.rrrrContainer')
+      window.ScrollReveal().reveal('#highlighted-event', { reset: true, origin: 'bottom', distance: '3em', opacity: 0, duration: 800 })
+      window.ScrollReveal().reveal('#highlighted-event .highlight-content', { reset: true, origin: 'bottom', distance: '2em', opacity: 0, delay: 200 })
+      window.ScrollReveal().reveal('#highlighted-event .highlight-preview', { reset: true, origin: 'bottom', distance: '3em', opacity: 0, delay: 300 })
       window.ScrollReveal().reveal('.descriptionSec h3', { reset: true, origin: 'bottom', distance: '4em', opacity: 0 })
       window.ScrollReveal().reveal('.descriptionSec p', { reset: true, origin: 'bottom', distance: '4em', opacity: 0 })
       window.ScrollReveal().reveal('.descriptionSec li', { reset: true, origin: 'bottom', distance: '4em', opacity: 0 })
@@ -129,6 +133,37 @@ export default function HomePage() {
           <h1>We lead</h1>
           <h1>the <span><span>VIC</span>tory!</span></h1>
         </div>
+      </section>
+
+      {/* Highlighted Event Section - Temporary/Modifiable */}
+      <section id="highlighted-event">
+        <div className="highlight-content">
+          <span className="highlight-badge">Featured Event</span>
+          <Image 
+            src="/ignite-logo-white.svg" 
+            alt="Ignite® Algiers 2025" 
+            width={400} 
+            height={80}
+            className="highlight-logo"
+            style={{ objectFit: 'contain', marginBottom: '0.5em' }}
+          />
+          <p>Join us for an inspiring evening of rapid-fire talks that will spark your creativity and ignite your passion for innovation!</p>
+          <a href="https://ignite.vic-enp.com" target="_blank" rel="noopener noreferrer" className="highlight-btn">
+            Visit Website <i className="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+        <a href="https://ignite.vic-enp.com" target="_blank" rel="noopener noreferrer" className="highlight-preview">
+          <Image 
+            src="/events/ignite-2025.png" 
+            alt="Ignite Algiers 2025" 
+            width={600} 
+            height={338}
+            style={{ objectFit: 'cover', width: '100%', height: 'auto', borderRadius: '1em' }}
+          />
+          <div className="highlight-overlay">
+            <span>Visit Site <i className="fa-solid fa-arrow-up-right-from-square"></i></span>
+          </div>
+        </a>
       </section>
 
       <section id="description-desk" className="descriptionSec">

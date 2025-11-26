@@ -124,6 +124,7 @@ body:has(.polymaze-page) {
 
 .polymaze-page span:not([class*="fa-"]) {
   color: var(--accent-color);
+  font-family: 'Montserrat', sans-serif;
 }
 
 .polymaze-page ul,
