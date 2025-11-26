@@ -1,10 +1,17 @@
 'use client'
 
+import { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
 import Header from '@/components/Header'
+
+declare global {
+  interface Window {
+    ScrollReveal: any;
+  }
+}
 
 interface EventCardProps {
   title: string
@@ -48,6 +55,34 @@ function EventCard({ title, link, previewImage, isExternal = true }: EventCardPr
 }
 
 export default function EventsPage() {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.ScrollReveal) {
+      window.ScrollReveal().reveal('.year-title', { 
+        reset: true, 
+        origin: 'bottom', 
+        distance: '2em', 
+        opacity: 0,
+        duration: 800,
+        interval: 100
+      })
+      window.ScrollReveal().reveal('.event-card', { 
+        reset: true, 
+        origin: 'bottom', 
+        distance: '3em', 
+        opacity: 0,
+        duration: 600,
+        interval: 150
+      })
+      window.ScrollReveal().reveal('.events-section', { 
+        reset: true, 
+        origin: 'bottom', 
+        distance: '2em', 
+        opacity: 0,
+        duration: 600
+      })
+    }
+  }, [])
+
   return (
     <>
       <Loader />
@@ -69,7 +104,7 @@ export default function EventsPage() {
           <EventCard 
             title="POLYMAZE 2024"
             link="/polymaze"
-            previewImage="/events/polymaze-2024-preview.svg"
+            previewImage="/events/polymaze-2024.png"
             isExternal={false}
           />
         </div>

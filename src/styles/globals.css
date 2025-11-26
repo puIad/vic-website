@@ -1086,6 +1086,12 @@ footer .bottom {
    z-index: 100;
 }
 
+/* Subpages with back button - reduce hero height */
+#hero:has(.backBtn) {
+   height: 60dvh;
+   min-height: 400px;
+}
+
 #hero .buttons {
    display: flex;
    gap: 1em;
@@ -1154,7 +1160,7 @@ footer .bottom {
 }
 
 .events-section:first-of-type {
-   margin-top: -150px;
+   margin-top: -80px;
 }
 
 .year-title {
